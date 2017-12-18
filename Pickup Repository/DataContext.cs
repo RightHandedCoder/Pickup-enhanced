@@ -1,5 +1,6 @@
 namespace Pickup_Repository
 {
+    using Pickup_Entity;
     using System;
     using System.Data.Entity;
     using System.Linq;
@@ -13,7 +14,7 @@ namespace Pickup_Repository
 
         }
 
-        public DataContext GetInstance()
+        public static DataContext GetInstance()
         {
             if (context == null)
             {
@@ -24,8 +25,19 @@ namespace Pickup_Repository
             else return null;
         }
 
+        public DbSet<Buyer> Buyers { get; set; }
+        public DbSet<Seller> Sellers { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
-      
+        public DbSet<BuyerCredential> BuyerCredentials { get; set; }
+        public DbSet<SellerCredential> SellerCredentials { get; set; }
+        public DbSet<AdminCredential> AdminCredentials { get; set; }
+
+        public DbSet<Area> Areas { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+
     }
 
   
