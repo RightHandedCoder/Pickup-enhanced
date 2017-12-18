@@ -214,6 +214,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Oracle Repository\Oracle Repository.csproj">
+      <Project>{D6DE283B-F084-490F-B3FE-2081049CD588}</Project>
+      <Name>Oracle Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pickup API\Pickup API.csproj">
       <Project>{67a9664c-ba21-423d-82df-5f8d86bb9f1f}</Project>
       <Name>Pickup API</Name>

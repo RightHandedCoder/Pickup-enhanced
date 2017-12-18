@@ -1,4 +1,5 @@
-﻿using Pickup_Entity;
+﻿using Oracle_Repository;
+using Pickup_Entity;
 using Pickup_Service;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,17 @@ namespace Pickup.Controllers
 {
     public class HomeController : Controller
     {
-        IService<Buyer> service = new Service<Buyer>();
+        //IService<Buyer> service = new Service<Buyer>();
 
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    return View(service.GetAll());
+        //}
+        Repository repo = new Repository();
+
+        public string Index()
         {
-            return View(service.GetAll());
+            return repo.Get();
         }
 
         public ActionResult About()
