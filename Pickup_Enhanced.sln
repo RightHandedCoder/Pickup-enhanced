@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pickup Repository", "Pickup
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pickup API", "Pickup API\Pickup API.csproj", "{67A9664C-BA21-423D-82DF-5F8D86BB9F1F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oracle Repository", "Oracle Repository\Oracle Repository.csproj", "{D6DE283B-F084-490F-B3FE-2081049CD588}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{67A9664C-BA21-423D-82DF-5F8D86BB9F1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67A9664C-BA21-423D-82DF-5F8D86BB9F1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67A9664C-BA21-423D-82DF-5F8D86BB9F1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6DE283B-F084-490F-B3FE-2081049CD588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6DE283B-F084-490F-B3FE-2081049CD588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6DE283B-F084-490F-B3FE-2081049CD588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6DE283B-F084-490F-B3FE-2081049CD588}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

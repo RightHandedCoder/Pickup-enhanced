@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{096C989C-A583-4AED-B590-3C18A0885712}</ProjectGuid>
+    <ProjectGuid>{D6DE283B-F084-490F-B3FE-2081049CD588}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pickup_Service</RootNamespace>
-    <AssemblyName>Pickup Service</AssemblyName>
+    <RootNamespace>Oracle_Repository</RootNamespace>
+    <AssemblyName>Oracle Repository</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.12.2.1100\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,18 +46,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Oracle Repository\Oracle Repository.csproj">
-      <Project>{d6de283b-f084-490f-b3fe-2081049cd588}</Project>
-      <Name>Oracle Repository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pickup Entity\Pickup Entity.csproj">
-      <Project>{95249b34-ca28-4df9-8fd5-f75cdafaf6bb}</Project>
-      <Name>Pickup Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pickup Repository\Pickup Repository.csproj">
-      <Project>{e18ccc7f-d015-4530-8929-fe5a0bef45b4}</Project>
-      <Name>Pickup Repository</Name>
-    </ProjectReference>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
