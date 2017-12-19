@@ -1,34 +1,30 @@
 ﻿using Oracle_Repository;
+using Pickup.App_Start;
 using Pickup_Entity;
 using Pickup_Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.ClientServices;
 
 namespace Pickup.Controllers
 {
     public class HomeController : Controller
     {
-        IService<Buyer> service = new Service<Buyer>();
+        IService<Product> service = Injector.Container.Resolve<IService<Product>>();
 
         public ActionResult Index()
         {
-            return View(service.GetAll());
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
+            //gets data from API
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Details(int id)
         {
-            ViewBag.Message = "Your contact page.";
-
+            //gets data from API
             return View();
         }
     }

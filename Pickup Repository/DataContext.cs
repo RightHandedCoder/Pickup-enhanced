@@ -7,7 +7,7 @@ namespace Pickup_Repository
 
     public class DataContext : DbContext
     {
-        private static DataContext context;
+        //private static DataContext context;
 
         private DataContext()
         {
@@ -16,13 +16,15 @@ namespace Pickup_Repository
 
         public static DataContext GetInstance()
         {
-            if (context == null)
-            {
-                context = new DataContext();
-                return context;
-            }
+            //if (context == null)
+            //{
+            //    context = new DataContext();
+            //    return context;
+            //}
 
-            else return null;
+            //else return null;
+
+            return new DataContext();
         }
 
         public DbSet<Buyer> Buyers { get; set; }
@@ -37,6 +39,7 @@ namespace Pickup_Repository
         public DbSet<Department> Departments { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<Catagory> Catagories { get; set; }
 
     }
 

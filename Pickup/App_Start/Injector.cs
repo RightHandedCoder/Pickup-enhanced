@@ -5,6 +5,7 @@ using System.Web;
 using Injection;
 using Injection.Interfaces;
 using Pickup_Service;
+using Pickup_Entity;
 
 namespace Pickup.App_Start
 {
@@ -19,7 +20,7 @@ namespace Pickup.App_Start
 
         public static void Configure()
         {
-            
+            Container.Register<IService<Product>, Service<Product>>().Singleton();
         }
     }
 }

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Abstract\Entity.cs" />
     <Compile Include="Abstract\Credential.cs" />
+    <Compile Include="Facade\Catagory.cs" />
     <Compile Include="Credential\AdminCredential.cs" />
     <Compile Include="Credential\BuyerCredential.cs" />
     <Compile Include="Facade\Area.cs" />

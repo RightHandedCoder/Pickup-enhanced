@@ -15,5 +15,6 @@ namespace Pickup_Entity
         public int Price { get; set; }
         [Required]
         public int SellerId { get; set; }
+        public int CatagoryId { get; set; }
     }
 }

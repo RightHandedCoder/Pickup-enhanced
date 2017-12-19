@@ -1,0 +1,27 @@
+﻿@model Pickup_Entity.Product
+    <table style="border: 1px solid black; width:300px;">
+        <tr>
+            <td>
+                <image alt="Photo"></image>
+            </td>
+                
+            <td>
+                <table align="center">
+                    <tr>
+                        <td><b>Product:</b></td>
+                        <td>@Model.ProductName</td>
+                    </tr>
+                    <tr>
+                        <td><b>Price:</b></td>
+                        <td>@Model.Price</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr >
+            <td align="center" colspan="3">
+                @Html.ActionLink("Details","Details", new { id = Model.Id})
+            </td>
+        </tr>
+    </table>
+
