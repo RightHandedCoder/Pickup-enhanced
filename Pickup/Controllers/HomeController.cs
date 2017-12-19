@@ -11,17 +11,11 @@ namespace Pickup.Controllers
 {
     public class HomeController : Controller
     {
-        //IService<Buyer> service = new Service<Buyer>();
+        IService<Buyer> service = new Service<Buyer>();
 
-        //public ActionResult Index()
-        //{
-        //    return View(service.GetAll());
-        //}
-        Repository repo = new Repository();
-
-        public string Index()
+        public ActionResult Index()
         {
-            return repo.Get();
+            return View(service.GetAll());
         }
 
         public ActionResult About()
