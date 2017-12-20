@@ -29,7 +29,7 @@
 
           complete: function (xhr) {
 
-              if (!xhr.status==200) {
+              if (xhr.status!=200) {
                   $('#noti').append("Loading Error");
               }
         }

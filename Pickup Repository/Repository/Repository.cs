@@ -10,7 +10,7 @@ namespace Pickup_Repository
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
-        DataContext context = new DataContext();
+        DataContext context = DataContext.GetInstance();
         public List<TEntity> GetAll()
         {
             return context.Set<TEntity>().ToList();
