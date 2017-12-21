@@ -13,20 +13,11 @@ namespace Oracle_Repository
         private static OracleConnection con = null;
         private static string conString = ConfigurationManager.ConnectionStrings["OraConnection"].ConnectionString;
 
-        private OraDataContext()
-        {
-
-        }
-
+     
         public static OracleConnection GetInstance()
         {
-            if (con == null)
-            {
-                con = new OracleConnection(conString);
-                return con;
-            }
-
-            else return null;
+            con = new OracleConnection(conString);
+            return con;
         }
     }
 }

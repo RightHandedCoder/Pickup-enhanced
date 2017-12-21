@@ -158,7 +158,12 @@
     <Compile Include="App_Start\Injector.cs" />
     <Compile Include="App_Start\InjectorControllerFactory.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BuyerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Controllers\SellerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -203,6 +208,17 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\_Product.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\Index_Oracle.cshtml" />
+    <Content Include="Views\Home\Details_Oracle.cshtml" />
+    <Content Include="Views\Login\Buyer_Login_Oracle.cshtml" />
+    <Content Include="Views\Login\Seller_Login_Oracle.cshtml" />
+    <Content Include="Views\Buyer\Index.cshtml" />
+    <Content Include="Views\Seller\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Registration\Buyer.cshtml" />
+    <Content Include="Views\Registration\Seller.cshtml" />
+    <Content Include="Views\Admin\ViewUsers_Buyer.cshtml" />
+    <Content Include="Views\Admin\ViewUsers_Seller.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

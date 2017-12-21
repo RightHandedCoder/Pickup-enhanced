@@ -14,18 +14,34 @@ namespace Pickup.Controllers
 {
     public class HomeController : Controller
     {
-        IService<Product> service = Injector.Container.Resolve<IService<Product>>();
+        ProductRepository productRepo = new ProductRepository();
 
         public ActionResult Index()
         {
             //gets data from API
-            return View();
+            //return View();
+  
+            return View("Index_Oracle", productRepo.GetAll());
         }
 
         public ActionResult Details(int id)
         {
             //gets data from API
-            return View();
+            //return View();
+
+            return View("Details_Oracle",productRepo.Get(id));
+        }
+
+        public ActionResult Login(int id)
+        {
+            //return View();
+
+            return RedirectToAction("Index", "Login", new { @id = id});
+        }
+
+        public ActionResult Register(int id)
+        {
+            return RedirectToAction("Index", "Registration", new { @id = id });
         }
     }
 }

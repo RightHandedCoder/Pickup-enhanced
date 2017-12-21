@@ -1,0 +1,51 @@
+﻿@model Pickup_Entity.Product
+
+@{
+    ViewBag.Title = "Details_Oracle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details_Oracle</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SellerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SellerId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CatagoryId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CatagoryId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
