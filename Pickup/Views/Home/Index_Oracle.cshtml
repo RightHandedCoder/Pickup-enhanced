@@ -1,15 +1,23 @@
 ﻿@model IEnumerable<Pickup_Entity.Product>
 
 @{
-    ViewBag.Title = "Index_Oracle";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["USER"]!=null)
+    {
+        ViewBag.Title = "Home";
+        Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    }
+
+    else
+    {
+        ViewBag.Title = "Home";
+        Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    }
+
 }
-
-
 
     @foreach (var item in Model)
     {
-        <table align="center">
-            @Html.Partial("_Product", item)
-        </table>
+
+        @Html.Partial("_Product", item)
+
     }

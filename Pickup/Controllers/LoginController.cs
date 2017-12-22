@@ -23,7 +23,12 @@ namespace Pickup.Controllers
                 return RedirectToAction("Seller");
             }
 
-            else return View("Error");
+            else if (id == 3)
+            {
+                return RedirectToAction("Admin");
+            }
+
+            else return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Buyer()
@@ -36,20 +41,59 @@ namespace Pickup.Controllers
             return View("Seller_Login_Oracle");
         }
 
+        public ActionResult Admin()
+        {
+            return View("Admin_Login_Oracle");
+        }
+
         [HttpPost]
         public ActionResult Buyer(BuyerCredential credential)
         {
-            CredentialRepository<BuyerCredential> credentialRepo = new CredentialRepository<BuyerCredential>();
+            if (ModelState.IsValid)
+            {
+                CredentialRepository<BuyerCredential> credentialRepo = new CredentialRepository<BuyerCredential>();
+                int id = credentialRepo.Get(credential);
+                Session["USER"] = "Buyer";
+                Session["USERID"] = id;
 
-            return RedirectToAction("Index", "Buyer", new { @id = credentialRepo.Get(credential) });
+                return RedirectToAction("Index", "Buyer", new { @id = id });
+            }
+
+            else return View(credential);
+           
         }
 
         [HttpPost]
         public ActionResult Seller(SellerCredential credential)
         {
-            CredentialRepository<SellerCredential> credentialRepo = new CredentialRepository<SellerCredential>();
+            if (ModelState.IsValid)
+            {
+                CredentialRepository<SellerCredential> credentialRepo = new CredentialRepository<SellerCredential>();
+                int id = credentialRepo.Get(credential);
+                Session["USER"] = "Seller";
+                Session["USERID"] = id;
 
-            return RedirectToAction("Index", "Seller", new { @id = credentialRepo.Get(credential) });
+                return RedirectToAction("Index", "Seller", new { @id = id });
+            }
+
+            else return View(credential);  
+        }
+
+        [HttpPost]
+        public ActionResult Admin(AdminCredential credential)
+        {
+            if (ModelState.IsValid)
+            {
+                CredentialRepository<AdminCredential> credentialRepo = new CredentialRepository<AdminCredential>();
+                int id = credentialRepo.Get(credential);
+                Session["USER"] = "Seller";
+                Session["USERID"] = id;
+
+                return RedirectToAction("Index", "Admin", new { @id = id });
+            }
+
+            else return View(credential);
+            
         }
 
     }

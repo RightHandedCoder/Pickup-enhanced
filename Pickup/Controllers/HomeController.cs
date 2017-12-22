@@ -43,5 +43,10 @@ namespace Pickup.Controllers
         {
             return RedirectToAction("Index", "Registration", new { @id = id });
         }
+
+        public ActionResult Catagory(int id)
+        {
+            return View("Index_Oracle", productRepo.GetCatagoryWiseProduct(id));
+        }
     }
 }

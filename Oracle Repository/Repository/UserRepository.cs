@@ -92,7 +92,7 @@ namespace Oracle_Repository
 
         }
 
-        public User Get(int id)
+        public User Get(int? id)
         {
             con.Open();
             OracleCommand cmd = con.CreateCommand();
@@ -110,12 +110,12 @@ namespace Oracle_Repository
                     user = new Buyer()
                     {
                         Id = reader.GetInt32(0),
-                        Address = reader.GetString(1),
-                        FirstName = reader.GetString(2),
-                        LastName = reader.GetString(3),
-                        Gender = reader.GetString(4),
-                        Email = reader.GetString(5),
-                        Phone = reader.GetString(6)
+                        FirstName = reader.GetString(1),
+                        LastName = reader.GetString(2),
+                        Gender = reader.GetString(3),
+                        Email = reader.GetString(4),
+                        Phone = reader.GetString(5),
+                        AreaId = reader.GetInt32(6)
                     };
                 }
             }
@@ -131,12 +131,12 @@ namespace Oracle_Repository
                     user = new Seller()
                     {
                         Id = reader.GetInt32(0),
-                        ShopName = reader.GetString(1),
-                        FirstName = reader.GetString(2),
-                        LastName = reader.GetString(3),
-                        Gender = reader.GetString(4),
-                        Email = reader.GetString(5),
-                        Phone = reader.GetString(6)
+                        FirstName = reader.GetString(1),
+                        LastName = reader.GetString(2),
+                        Gender = reader.GetString(3),
+                        Email = reader.GetString(4),
+                        Phone = reader.GetString(5),
+                        AreaId = reader.GetInt32(6)
                     };
                 }
 

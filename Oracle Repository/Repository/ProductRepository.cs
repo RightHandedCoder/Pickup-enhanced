@@ -41,6 +41,34 @@ namespace Oracle_Repository
 
         }
 
+        public List<Product> GetCatagoryWiseProduct(int id)
+        {
+            List<Product> products = new List<Product>();
+
+            con.Open();
+            OracleCommand cmd = con.CreateCommand();
+            cmd.CommandText = "select * from products where catagoryid="+id;
+
+            OracleDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Product p = new Product();
+
+                p.Id = reader.GetInt32(0);
+                p.ProductName = reader.GetString(1);
+                p.Price = reader.GetInt32(2);
+                p.SellerId = reader.GetInt32(3);
+                p.CatagoryId = reader.GetInt32(4);
+
+                products.Add(p);
+            }
+
+            con.Close();
+            return products;
+
+        }
+
         public Product Get(int id)
         {
             con.Open();

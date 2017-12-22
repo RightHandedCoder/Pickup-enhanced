@@ -17,5 +17,12 @@ namespace Pickup.Controllers
         {
             return View(buyerRepo.Get(id));
         }
+
+        public ActionResult Logout()
+        {
+            Session["USER"] = null;
+            Session["USERID"] = null;
+            return RedirectToAction("Index","Home");
+        }
     }
 }

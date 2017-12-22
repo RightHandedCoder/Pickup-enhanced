@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Pickup.com</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Pickup.com", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                </ul>
+               
+                @*search bar*@
+                    <form class="navbar-form navbar-left" role="search" id="searchForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search" id="searchBox">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login / Register <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Login As Buyer", "Login", new { id = 1 })</li>
+                            <li>@Html.ActionLink("Login As Seller", "Login", new { id = 2 })</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Register As Buyer", "Register", new { id = 1 })</li>
+                            <li>@Html.ActionLink("Register As Seller", "Register", new { id = 2 })</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+            <div class="col-xs-3 sidebar">
+                <h2>Select Catagory</h2>
+                <ul class="nav nav-tabs nav-stacked" id="cat">
+                    <li>@Html.ActionLink("Men Cloths","Catagory",new { id = 1}, new { @class = "btn btn-primary btn-large" })</li>
+                    <li>@Html.ActionLink("Women Cloths", "Catagory", new { id = 2 }, new { @class = "btn btn-primary btn-large" })</li>
+                    <li>@Html.ActionLink("Electronics", "Catagory", new { id = 3 }, new { @class = "btn btn-primary btn-large" })</li>
+                    <li>@Html.ActionLink("Home Appliences", "Catagory", new { id = 4 }, new { @class = "btn btn-primary btn-large" })</li>
+                </ul>
+            </div>
+
+            <div class="container body-content">
+                @RenderBody()
+
+                <hr />
+                <footer>
+                    <p>@Html.ActionLink("Admin Login","Index","Login", new { id = 3}, null)</p>
+                    <p>&copy; @DateTime.Now.Year - SQL Ninjas</p>
+                </footer>
+            </div>
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
+</body>
+</html>
