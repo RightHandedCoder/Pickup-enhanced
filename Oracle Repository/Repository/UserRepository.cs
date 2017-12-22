@@ -12,7 +12,7 @@ namespace Oracle_Repository
     {
         OracleConnection con = OraDataContext.GetInstance();
 
-        public List<User> GetAll()
+        public virtual List<User> GetAll()
         {
             List<User> list = new List<User>();
 
@@ -63,36 +63,13 @@ namespace Oracle_Repository
                 }
             }
 
-            else if (typeof(TUser) == typeof(Admin))
-            {
-                cmd.CommandText = "select * from admins";
-
-                OracleDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    list.Add(new Admin
-                    {
-
-                        Id = reader.GetInt32(0),
-                        Salary = reader.GetInt32(2),
-                        FirstName = reader.GetString(3),
-                        LastName = reader.GetString(4),
-                        Gender = reader.GetString(5),
-                        Email = reader.GetString(6),
-                        Phone = reader.GetString(7)
-
-                    });
-                }
-            }
-
             con.Close();
 
             return list;
 
         }
 
-        public User Get(int? id)
+        public virtual User Get(int? id)
         {
             con.Open();
             OracleCommand cmd = con.CreateCommand();
@@ -142,33 +119,11 @@ namespace Oracle_Repository
 
             }
 
-            else if (typeof(TUser) == typeof(Admin))
-            {
-                cmd.CommandText = "select * from admins where id=" + id;
-
-                OracleDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    user = new Admin()
-                    {
-                        Id = reader.GetInt32(0),
-                        Salary = reader.GetInt32(2),
-                        FirstName = reader.GetString(3),
-                        LastName = reader.GetString(4),
-                        Gender = reader.GetString(5),
-                        Email = reader.GetString(6),
-                        Phone = reader.GetString(7)
-                    };
-                }
-
-            }
-
             con.Close();
             return user;
         }
 
-        public int Insert(TUser user)
+        public virtual int Insert(TUser user)
         {
             con.Open();
             OracleCommand cmd = con.CreateCommand();

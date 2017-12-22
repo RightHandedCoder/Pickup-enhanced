@@ -86,7 +86,7 @@ namespace Pickup.Controllers
             {
                 CredentialRepository<AdminCredential> credentialRepo = new CredentialRepository<AdminCredential>();
                 int id = credentialRepo.Get(credential);
-                Session["USER"] = "Seller";
+                Session["USER"] = "Admin";
                 Session["USERID"] = id;
 
                 return RedirectToAction("Index", "Admin", new { @id = id });

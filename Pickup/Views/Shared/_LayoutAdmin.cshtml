@@ -28,10 +28,10 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-3 sidebar">
+    @*<div class="col-xs-3 sidebar">
         <h2>Select Catagory</h2>
         <ul class="nav nav-tabs nav-stacked" id="cat">
-            <li>@Html.ActionLink("A", "", new { id = 1 }, new { @class = "btn btn-primary btn-large" })</li>
+            <li>@Html.ActionLink("Create Admin", "Create", "Admin", null, new { @class = "btn btn-primary btn-large" })</li>
             <li>@Html.ActionLink("B", "", new { id = 2 }, new { @class = "btn btn-primary btn-large" })</li>
             <li>@Html.ActionLink("C", "", new { id = 3 }, new { @class = "btn btn-primary btn-large" })</li>
             <li>@Html.ActionLink("D", "", new { id = 4 }, new { @class = "btn btn-primary btn-large" })</li>
@@ -39,7 +39,24 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
+        <hr />*@
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3 sidebar">
+                <h3>Sidebar</h3>
+                <ul class="nav nav-tabs nav-stacked">
+                    <li>@Html.ActionLink("Create Admin", "Create", "Admin", null, new { @class = "btn btn-primary btn-large" })</li>
+                    <li>@Html.ActionLink("View Buyers", "BuyersList", "Admin", null, new { @class = "btn btn-primary btn-large" })</li>
+                    <li>@Html.ActionLink("View Sellers", "SellersList", "Admin", null, new { @class = "btn btn-primary btn-large" })</li>
+                    <li>@Html.ActionLink("View Products", "ProductsList", "Employee", null, new { @class = "btn btn-primary btn-large" })</li>
+                </ul>
+            </div>
+            <div class="col-xs-9">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
         <footer>
             <p>&copy; @DateTime.Now.Year - SQL Ninjas</p>
         </footer>

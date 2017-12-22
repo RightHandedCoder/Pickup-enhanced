@@ -27,6 +27,11 @@ namespace Oracle_Repository
                 cmd.CommandText = "select sellerid from sellercredentials where username='" + obj.Username + "' and password='" + obj.Password + "'";
             }
 
+            else if (typeof(TCredential) == typeof(AdminCredential))
+            {
+                cmd.CommandText = "select adminid from admincredentials where username='" + obj.Username + "' and password='" + obj.Password + "'";
+            }
+
             OracleDataReader reader = cmd.ExecuteReader();
 
             if (reader.Read())

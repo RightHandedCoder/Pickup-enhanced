@@ -10,7 +10,7 @@ namespace Pickup.Controllers
 {
     public class AdminController : Controller
     {
-        UserRepository<Admin> adminRepo = new UserRepository<Admin>();
+        AdminRepository adminRepo = new AdminRepository();
 
         // GET: Admin
         public ActionResult Index(int? id)
@@ -23,7 +23,7 @@ namespace Pickup.Controllers
             else return View(adminRepo.Get(id));
         }
 
-        public ActionResult ViewUsers(int id)
+        public ActionResult ViewUsers(int? id)
         {
             if (id == 1)
             {
@@ -39,7 +39,7 @@ namespace Pickup.Controllers
                 return View("ViewUsers_Seller", sellerRepo.GetAll());
             }
 
-            else return View("Error");
+            else return RedirectToAction("Index","Home");
         }
 
         public ActionResult Logout()
@@ -47,6 +47,42 @@ namespace Pickup.Controllers
             Session["USER"] = null;
             Session["USERID"] = null;
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Admin admin)
+        {
+            if (ModelState.IsValid)
+            {
+                if (adminRepo.Insert(admin) == 1)
+                {
+                    return RedirectToAction("Index", "Admin", new { id = Session["USERID"] });
+                }
+
+                else return Create(admin);
+            }
+
+            else return View("Error");
+        }
+
+        public ActionResult BuyersList()
+        {
+            return View();
+        }
+
+        public ActionResult SellersList()
+        {
+            return View();
+        }
+
+        public ActionResult ProductsList()
+        {
+            return View();
         }
     }
 }
