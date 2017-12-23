@@ -12,21 +12,22 @@ namespace Oracle_Repository
     {
         OracleConnection con = OraDataContext.GetInstance();
 
-        public virtual List<User> GetAll()
+        public List<TUser> GetAll()
         {
-            List<User> list = new List<User>();
-
             con.Open();
             OracleCommand cmd = con.CreateCommand();
 
             if (typeof(TUser) == typeof(Buyer))
             {
-                cmd.CommandText = "select * from buyers";
+                List<Buyer> list = new List<Buyer>();
+
+                cmd.CommandText = "select buyers.id,firstname,lastname,gender,email,phone,areaname,address from buyers,areas where buyers.areaid=areas.id";
                 OracleDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    list.Add(new Buyer {
+                    list.Add(new Buyer
+                    {
 
                         Id = reader.GetInt32(0),
                         FirstName = reader.GetString(1),
@@ -34,15 +35,21 @@ namespace Oracle_Repository
                         Gender = reader.GetString(3),
                         Email = reader.GetString(4),
                         Phone = reader.GetString(5),
-                        AreaId = reader.GetInt32(6)
+                        AreaName = reader.GetString(6),
+                        Address = reader.GetString(7)
 
                     });
                 }
+
+                con.Close();
+                return list as List<TUser>;
             }
 
             else if (typeof(TUser) == typeof(Seller))
             {
-                cmd.CommandText = "select * from sellers";
+                List<Seller> list = new List<Seller>();
+
+                cmd.CommandText = "select sellers.id,firstname,lastname,gender,email,phone,areaname,shopname from sellers,areas where sellers.areaid=areas.id";
 
                 OracleDataReader reader = cmd.ExecuteReader();
 
@@ -50,41 +57,33 @@ namespace Oracle_Repository
                 {
                     list.Add(new Seller
                     {
-
                         Id = reader.GetInt32(0),
                         FirstName = reader.GetString(1),
                         LastName = reader.GetString(2),
                         Gender = reader.GetString(3),
                         Email = reader.GetString(4),
                         Phone = reader.GetString(5),
-                        AreaId = reader.GetInt32(6)
+                        AreaName = reader.GetString(6),
+                        ShopName = reader.GetString(7)
 
                     });
                 }
+
+                con.Close();
+                return list as List<TUser>;
             }
 
-            con.Close();
-
-            return list;
-
-        }
-
-        public virtual User Get(int? id)
-        {
-            con.Open();
-            OracleCommand cmd = con.CreateCommand();
-
-            User user = null;
-
-            if (typeof(TUser)==typeof(Buyer))
+            else if (typeof(TUser) == typeof(Admin))
             {
-                cmd.CommandText = "select * from buyers where id=" + id;
+                List<Admin> list = new List<Admin>();
+
+                cmd.CommandText = "select admins.id,firstname,lastname,gender,email,phone,areaname,departmentname from admins,areas,dept where admins.areaid=areas.id and admins.departmentid=dept.id";
 
                 OracleDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read())
+                while (reader.Read())
                 {
-                    user = new Buyer()
+                    list.Add(new Admin
                     {
                         Id = reader.GetInt32(0),
                         FirstName = reader.GetString(1),
@@ -92,50 +91,128 @@ namespace Oracle_Repository
                         Gender = reader.GetString(3),
                         Email = reader.GetString(4),
                         Phone = reader.GetString(5),
-                        AreaId = reader.GetInt32(6)
-                    };
-                }
-            }
+                        AreaName = reader.GetString(6),
+                        DepartmentName = reader.GetString(7)
 
-            else if (typeof(TUser) == typeof(Seller))
-            {
-                cmd.CommandText = "select * from sellers where id=" + id;
-
-                OracleDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    user = new Seller()
-                    {
-                        Id = reader.GetInt32(0),
-                        FirstName = reader.GetString(1),
-                        LastName = reader.GetString(2),
-                        Gender = reader.GetString(3),
-                        Email = reader.GetString(4),
-                        Phone = reader.GetString(5),
-                        AreaId = reader.GetInt32(6)
-                    };
+                    });
                 }
 
+                con.Close();
+                return list as List<TUser>;
             }
 
-            con.Close();
-            return user;
+            else return null;
+
         }
 
-        public virtual int Insert(TUser user)
+        public User Get(int? id)
         {
             con.Open();
             OracleCommand cmd = con.CreateCommand();
 
             if (typeof(TUser) == typeof(Buyer))
             {
-                cmd.CommandText = "insert into buyers values(DEFAULT,'"+user.FirstName+"','"+user.LastName+"','"+user.Gender+"','"+user.Email+"','"+user.Phone+"',"+user.AreaId+")";
+                Buyer buyer = null;
+                cmd.CommandText = "select buyers.id,firstname,lastname,gender,email,phone,areaname,address from buyers,areas where buyers.areaid = areas.id and buyers.id=" + id;
+
+                OracleDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    buyer = new Buyer()
+                    {
+                        Id = reader.GetInt32(0),
+                        FirstName = reader.GetString(1),
+                        LastName = reader.GetString(2),
+                        Gender = reader.GetString(3),
+                        Email = reader.GetString(4),
+                        Phone = reader.GetString(5),
+                        AreaName = reader.GetString(6),
+                        Address = reader.GetString(7)
+                    };
+                }
+
+                con.Close();
+                return buyer as TUser;
             }
 
             else if (typeof(TUser) == typeof(Seller))
             {
-                cmd.CommandText = "insert into sellers values(DEFAULT,'" + user.FirstName + "','" + user.LastName + "','" + user.Gender + "','" + user.Email + "','" + user.Phone + "'," + user.AreaId + ")";
+                Seller seller = null;
+                cmd.CommandText = "select sellers.id,firstname,lastname,gender,email,phone,areaname,shopname from sellers,areas where sellers.areaid=areas.id and sellers.id=" + id;
+
+                OracleDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    seller = new Seller()
+                    {
+                        Id = reader.GetInt32(0),
+                        FirstName = reader.GetString(1),
+                        LastName = reader.GetString(2),
+                        Gender = reader.GetString(3),
+                        Email = reader.GetString(4),
+                        Phone = reader.GetString(5),
+                        AreaName = reader.GetString(6),
+                        ShopName = reader.GetString(7)
+                    };
+                }
+
+                con.Close();
+                return seller as TUser;
+            }
+
+            else if (typeof(TUser) == typeof(Admin))
+            {
+                Admin admin = null;
+                cmd.CommandText = "select admins.id,firstname,lastname,gender,email,phone,areaname,departmentname from admins,areas,dept where admins.areaid=areas.id and admins.departmentid=dept.id and admins.id=" + id;
+
+                OracleDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    admin = new Admin()
+                    {
+                        Id = reader.GetInt32(0),
+                        FirstName = reader.GetString(1),
+                        LastName = reader.GetString(2),
+                        Gender = reader.GetString(3),
+                        Email = reader.GetString(4),
+                        Phone = reader.GetString(5),
+                        AreaName = reader.GetString(6),
+                        DepartmentName = reader.GetString(7)
+                    };
+                }
+
+                con.Close();
+                return admin as TUser;
+            }
+
+            else return null;
+        }
+
+        public int Insert(TUser user)
+        {
+            con.Open();
+            OracleCommand cmd = con.CreateCommand();
+
+            if (typeof(TUser) == typeof(Buyer))
+            {
+                Buyer b = user as Buyer;
+
+                cmd.CommandText = "insert into buyers values(DEFAULT,'"+b.FirstName+"','"+b.LastName+"','"+b.Gender+"','"+b.Email+"','"+b.Phone+"',"+b.AreaId+",'"+b.Address+"')";
+            }
+
+            else if (typeof(TUser) == typeof(Seller))
+            {
+                Seller s = user as Seller;
+                cmd.CommandText = "insert into sellers values(DEFAULT,'" + s.FirstName + "','" + s.LastName + "','" + s.Gender + "','" + s.Email + "','" + s.Phone + "'," + s.AreaId + ",'"+s.ShopName+"')";
+            }
+
+            else if (typeof(TUser) == typeof(Admin))
+            {
+                Admin a = user as Admin;
+                cmd.CommandText = "insert into admins values(DEFAULT,'" + a.FirstName + "','" + a.LastName + "','" + a.Gender + "','" + a.Email + "','" + a.Phone + "'," + a.AreaId + "," + a.DepartmentId + "," + a.Salary + ")";
             }
 
             int result = cmd.ExecuteNonQuery();
@@ -145,6 +222,35 @@ namespace Oracle_Repository
             return result;
         }
 
+        public int GetId(string email)
+        {
+            con.Open();
+            OracleCommand cmd = con.CreateCommand();
+
+            if (typeof(TUser)==typeof(Buyer))
+            {
+                cmd.CommandText = "select id from buyers where email='" + email + "'";
+            }
+
+            else if (typeof(TUser) == typeof(Seller))
+            {
+                cmd.CommandText = "select id from sellers where email='" + email + "'";
+            }
+
+            else if (typeof(TUser) == typeof(Admin))
+            {
+                cmd.CommandText = "select id from admins where email='" + email + "'";
+            }
+
+            OracleDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                return reader.GetInt32(0);
+            }
+
+            else return 0;
+        }
 
     }
 }

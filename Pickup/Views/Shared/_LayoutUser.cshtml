@@ -26,6 +26,7 @@
 
                     @if (Session["USER"].ToString() == "Buyer")
                     {
+                        <li>@Html.ActionLink("My Cart", "MyCart", "Home")</li>
                         <li>@Html.ActionLink("Profile", "Index", "Buyer", new { id = Session["USERID"] }, null)</li>
                     }
 

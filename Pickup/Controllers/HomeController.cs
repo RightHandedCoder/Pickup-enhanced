@@ -48,5 +48,15 @@ namespace Pickup.Controllers
         {
             return View("Index_Oracle", productRepo.GetCatagoryWiseProduct(id));
         }
+
+        public ActionResult AddToCart(int id)
+        {
+            return RedirectToAction("AddToCart", "Buyer", new { @id = id });
+        }
+        
+        public ActionResult MyCart()
+        {
+            return RedirectToAction("Index", "Cart");
+        }
     }
 }

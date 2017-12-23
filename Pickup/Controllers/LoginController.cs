@@ -55,6 +55,7 @@ namespace Pickup.Controllers
                 int id = credentialRepo.Get(credential);
                 Session["USER"] = "Buyer";
                 Session["USERID"] = id;
+                Session["CART"] = new List<int>();
 
                 return RedirectToAction("Index", "Buyer", new { @id = id });
             }

@@ -15,13 +15,28 @@
                         <td><b>Price:</b></td>
                         <td>@Model.Price</td>
                     </tr>
+                    <tr>
+                        <td><b>Catagory:</b></td>
+                        <td>@Model.CatagoryName</td>
+                    </tr>
                 </table>
             </td>
         </tr>
         <tr >
             <td align="center" colspan="3">
-                @Html.ActionLink("Details","Details", new { id = Model.Id})
+                @Html.ActionLink("Add To Cart","AddToCart", new { id = Model.Id}, new { @class= "btn btn-primary btn" })
             </td>
         </tr>
     </table>
+
+
+@*<div class="card" style="width: 20rem;">
+    <img class="card-img-top" src="#" alt="Photo">
+    <div class="card-body">
+        <h4 class="card-title">@Model.ProductName</h4>
+        <p class="card-text">Price: @Model.Price</p>
+        <p class="card-text">Catagory: @Model.CatagoryName</p>
+        <a href="#" class="btn btn-primary">Details</a>
+    </div>
+</div>*@
 

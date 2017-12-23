@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Pickup_Entity.Product>
+
+@{
+    ViewBag.Title = "MyCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MyCart</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SellerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CatagoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SellerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CatagoryName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SellerId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CatagoryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SellerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CatagoryName)
+        </td>
+        <td>
+            @Html.ActionLink("Remove", "Delete", new { id=item.Id }, new { @class = "btn btn-primary" })
+        </td>
+    </tr>
+}
+
+</table>
+
+@Html.ActionLink("Check Out", "", null, new { @class = "btn btn-primary" })

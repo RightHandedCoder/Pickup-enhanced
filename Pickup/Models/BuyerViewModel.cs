@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Pickup_Entity
+namespace Pickup
 {
-    public abstract class User : Entity
+    public class BuyerViewModel
     {
+        public int Id { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
@@ -21,8 +21,14 @@ namespace Pickup_Entity
         [Required, MaxLength(12), MinLength(11)]
         public string Phone { get; set; }
         [Required]
+        public string Address { get; set; }
+        [Required]
         public int AreaId { get; set; }
         [NotMapped]
         public string AreaName { get; set; }
+        [Required]
+        public string Username { get; set; }
+        [Required, MinLength(4)]
+        public string Password { get; set; }
     }
 }

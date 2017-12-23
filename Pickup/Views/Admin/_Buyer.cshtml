@@ -1,0 +1,22 @@
+﻿@model Pickup_Entity.User
+
+<table style="border: 1px solid black; width:400px;" align="center">
+    <thead>
+        <tr>
+            <th>@Html.ActionLink(Model.FirstName+" "+Model.LastName, "BuyerDetails", "Admin", new { id = Model.Id}, null)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Phone: @Model.Phone</td>
+            <td colspan="3" valign="middle" align="right">@Html.ActionLink("Details", "BuyerDetails", "Admin", new { id = Model.Id }, new { @class = "btn btn-primary btn"})</td>
+        </tr>
+        <tr>
+            <td>Email: @Model.Email</td>
+        </tr>
+        <tr>
+            <td>Area: @Model.AreaName</td>
+        </tr>
+    </tbody>
+</table>
+

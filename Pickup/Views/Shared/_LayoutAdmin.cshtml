@@ -46,9 +46,11 @@
                 <h3>Sidebar</h3>
                 <ul class="nav nav-tabs nav-stacked">
                     <li>@Html.ActionLink("Create Admin", "Create", "Admin", null, new { @class = "btn btn-primary btn-large" })</li>
+                    <li>@Html.ActionLink("Create New Area", "CreateArea", "Admin", null, new { @class = "btn btn-primary btn-large" })</li>
+                    <li>@Html.ActionLink("Create New Department", "CreateDepartment", "Admin", null, new { @class = "btn btn-primary btn-large" })</li>
                     <li>@Html.ActionLink("View Buyers", "BuyersList", "Admin", null, new { @class = "btn btn-primary btn-large" })</li>
                     <li>@Html.ActionLink("View Sellers", "SellersList", "Admin", null, new { @class = "btn btn-primary btn-large" })</li>
-                    <li>@Html.ActionLink("View Products", "ProductsList", "Employee", null, new { @class = "btn btn-primary btn-large" })</li>
+                    <li>@Html.ActionLink("View Products", "ProductsList", "Admin", null, new { @class = "btn btn-primary btn-large" })</li>    
                 </ul>
             </div>
             <div class="col-xs-9">
@@ -60,7 +62,6 @@
         <footer>
             <p>&copy; @DateTime.Now.Year - SQL Ninjas</p>
         </footer>
-    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

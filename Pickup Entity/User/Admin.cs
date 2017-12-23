@@ -12,5 +12,6 @@ namespace Pickup_Entity
         [Required]
         public int DepartmentId { get; set; }
         public int Salary { get; set; }
+        public string DepartmentName { get; set; }
     }
 }

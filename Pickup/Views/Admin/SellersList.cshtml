@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Pickup_Entity.User>
+
+@{
+    ViewBag.Title = "Seller List";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Seller List</h2>
+<div id="approved">
+    <table class="table">
+        <tbody>
+            @foreach (var item in Model)
+            {
+                @Html.Partial("_Seller", item)
+            }
+
+
+        </tbody>
+    </table>
+</div>

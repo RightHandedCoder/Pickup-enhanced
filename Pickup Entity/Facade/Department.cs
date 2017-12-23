@@ -11,7 +11,6 @@ namespace Pickup_Entity
     {
         [Required]
         public string DepartmentName { get; set; }
-        [Required]
         public int DepartmentLocation { get; set; }
     }
 }

@@ -11,6 +11,8 @@ namespace Pickup.Controllers
     public class AdminController : Controller
     {
         AdminRepository adminRepo = new AdminRepository();
+        Repository<Area> areaRepo = new Repository<Area>();
+        Repository<Department> deptRepo = new Repository<Department>();
 
         // GET: Admin
         public ActionResult Index(int? id)
@@ -51,6 +53,34 @@ namespace Pickup.Controllers
 
         public ActionResult Create()
         {
+            List<SelectListItem> areaList = new List<SelectListItem>();
+            List<SelectListItem> deptList = new List<SelectListItem>();
+
+            foreach (Area area in areaRepo.GetAll())
+            {
+                SelectListItem item = new SelectListItem()
+                {
+                    Value = area.Id.ToString(),
+                    Text = area.AreaName
+                };
+
+                areaList.Add(item);
+            }
+
+            foreach (Department dept in deptRepo.GetAll())
+            {
+                SelectListItem item = new SelectListItem()
+                {
+                    Value = dept.Id.ToString(),
+                    Text = dept.DepartmentName
+                };
+
+                deptList.Add(item);
+            }
+
+            ViewBag.AreaList = areaList;
+            ViewBag.DeptList = deptList;
+
             return View();
         }
 
@@ -72,17 +102,91 @@ namespace Pickup.Controllers
 
         public ActionResult BuyersList()
         {
-            return View();
+            UserRepository<Buyer> buyerRepo = new UserRepository<Buyer>();
+
+            return View(buyerRepo.GetAll());
+        }
+
+        public ActionResult BuyerDetails(int id)
+        {
+            UserRepository<Buyer> buyerRepo = new UserRepository<Buyer>();
+
+            return View(buyerRepo.Get(id));
         }
 
         public ActionResult SellersList()
         {
-            return View();
+            UserRepository<Seller> sellerRepo = new UserRepository<Seller>();
+
+            return View(sellerRepo.GetAll());
+        }
+
+        public ActionResult SellerDetails(int id)
+        {
+            UserRepository<Seller> sellerRepo = new UserRepository<Seller>();
+
+            return View(sellerRepo.Get(id));
         }
 
         public ActionResult ProductsList()
         {
+            ProductRepository productRepo = new ProductRepository();
+
+            return View(productRepo.GetAll());
+        }
+
+        public ActionResult ProductDetails(int id)
+        {
+            ProductRepository productRepo = new ProductRepository();
+
+            return View(productRepo.Get(id));
+        }
+
+
+        public ActionResult CreateArea()
+        {
             return View();
+        }
+
+        public ActionResult CreateDepartment()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateArea(Area area)
+        {
+            Repository<Area> areaRepo = new Repository<Area>();
+
+            if (ModelState.IsValid)
+            {
+                if (areaRepo.Insert(area) == 1)
+                {
+                    return RedirectToAction("Index", "Admin", new { id = Session["USERID"] });
+                }
+
+                else return View("Error");
+            }
+
+            else return View(area);
+        }
+
+        [HttpPost]
+        public ActionResult CreateDepartment(Department dept)
+        {
+            Repository<Department> deptRepo = new Repository<Department>();
+
+            if (ModelState.IsValid)
+            {
+                if (deptRepo.Insert(dept) == 1)
+                {
+                    return RedirectToAction("Index", "Admin", new { id = Session["USERID"] });
+                }
+
+                else return View("Error");
+            }
+
+            else return View(dept);
         }
     }
 }

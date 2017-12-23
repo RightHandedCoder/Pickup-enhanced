@@ -9,6 +9,7 @@ namespace Pickup_Entity
 {
     public class Seller : User
     {
+        [Required]
         public string ShopName { get; set; }
     }
 }

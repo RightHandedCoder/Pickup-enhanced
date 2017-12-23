@@ -164,6 +164,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BuyerController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -172,6 +173,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BuyerViewModel.cs" />
+    <Compile Include="Models\SellerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -213,9 +216,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\_Product.cshtml" />
-    <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Index_Oracle.cshtml" />
-    <Content Include="Views\Home\Details_Oracle.cshtml" />
     <Content Include="Views\Login\Buyer_Login_Oracle.cshtml" />
     <Content Include="Views\Login\Seller_Login_Oracle.cshtml" />
     <Content Include="Views\Buyer\Index.cshtml" />
@@ -233,10 +234,21 @@
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Login\Admin_Login_Oracle.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\BuyersList.cshtml" />
+    <Content Include="Views\Admin\_Buyer.cshtml" />
+    <Content Include="Views\Admin\BuyerDetails.cshtml" />
+    <Content Include="Views\Admin\_Seller.cshtml" />
+    <Content Include="Views\Admin\SellersList.cshtml" />
+    <Content Include="Views\Admin\SellerDetails.cshtml" />
+    <Content Include="Views\Admin\ProductsList.cshtml" />
+    <Content Include="Views\Admin\_Product.cshtml" />
+    <Content Include="Views\Admin\ProductDetails.cshtml" />
+    <Content Include="Views\Admin\CreateArea.cshtml" />
+    <Content Include="Views\Admin\CreateDepartment.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Catagory\" />
     <Folder Include="Views\Product\" />
   </ItemGroup>
