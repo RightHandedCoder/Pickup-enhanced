@@ -50,6 +50,7 @@
     <Compile Include="Repository\AdminRepository.cs" />
     <Compile Include="Repository\CatagoryRepository.cs" />
     <Compile Include="Repository.cs" />
+    <Compile Include="Repository\SellerRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Repository\CredentialRepository.cs" />
     <Compile Include="OraDataContext.cs" />

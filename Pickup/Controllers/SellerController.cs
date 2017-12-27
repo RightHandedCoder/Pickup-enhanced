@@ -11,7 +11,7 @@ namespace Pickup.Controllers
 {
     public class SellerController : Controller
     {
-        UserRepository<Seller> sellerRepo = new UserRepository<Seller>();
+        SellerRepository sellerRepo = new SellerRepository();
         Repository<Area> areaRepo = new Repository<Area>();
         Repository<Catagory> catagoryRepo = new Repository<Catagory>();
         CredentialRepository<SellerCredential> credentialRepo = new CredentialRepository<SellerCredential>();
@@ -135,6 +135,11 @@ namespace Pickup.Controllers
             }
 
             else return View(product);
+        }
+
+        public ActionResult MyProducts()
+        {
+            return View(sellerRepo.GetMyProducts((int)Session["USERID"]));
         }
     }
 }

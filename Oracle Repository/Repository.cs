@@ -75,7 +75,7 @@ namespace Oracle_Repository
                         ProductName = reader.GetString(1),
                         Price = reader.GetInt32(2),
                         SellerName = reader.GetString(3) + " " + reader.GetString(4),
-                        CatagoryName = reader.GetString(5)
+                        CatagoryName = reader.GetString(5),
                     });
                 }
 
@@ -170,7 +170,7 @@ namespace Oracle_Repository
 
                 if (reader.Read())
                 {
-                    p = new Product() { Id = reader.GetInt32(0), ProductName = reader.GetString(1), Price = reader.GetInt32(2), SellerName = reader.GetString(3) + " " + reader.GetString(4), CatagoryName = reader.GetString(5)};
+                    p = new Product() { Id = reader.GetInt32(0), ProductName = reader.GetString(1), Price = reader.GetInt32(2), SellerName = reader.GetString(3) + " " + reader.GetString(4), CatagoryName = reader.GetString(5) };
                 }
 
                 con.Close();
