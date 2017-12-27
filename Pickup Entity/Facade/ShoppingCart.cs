@@ -10,7 +10,10 @@ namespace Pickup_Entity
     public class ShoppingCart : Entity
     {
         [Required]
-        public int ProductId { get; set; }
-        public int Quantity { get; set; }
+        public int BuyerId { get; set; }
+        [Required]
+        public string Date { get; set; }
+        [Required]
+        public string Time { get; set; }
     }
 }

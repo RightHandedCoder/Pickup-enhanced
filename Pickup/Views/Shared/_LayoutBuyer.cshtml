@@ -34,9 +34,9 @@
             <div class="col-xs-3 sidebar">
                 <h3>Sidebar</h3>
                 <ul class="nav nav-tabs nav-stacked">
-                    <li>@Html.ActionLink("Personal Information", "", "", null, new { @class = "btn btn-primary btn-large" })</li>
-                    <li>@Html.ActionLink("My Recent Purchase", "", "", null, new { @class = "btn btn-primary btn-large" })</li>
-                    <li>@Html.ActionLink("Settings ", "", "", null, new { @class = "btn btn-primary btn-large" })</li>
+                    <li>@Html.ActionLink("Personal Information", "Details", "Buyer", new { @id=Session["USERID"]}, new { @class = "btn btn-primary btn-large" })</li>
+                    <li>@Html.ActionLink("My Recent Purchase", "MyPurchase", "Buyer", new { @id=Session["USERID"]}, new { @class = "btn btn-primary btn-large" })</li>
+                    <li>@Html.ActionLink("Change Credentials", "ChangePassword", "Buyer", new { @id = Session["USERID"] }, new { @class = "btn btn-primary btn-large" })</li>
                 </ul>
             </div>
             <div class="col-xs-9">

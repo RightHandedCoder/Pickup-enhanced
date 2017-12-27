@@ -63,7 +63,7 @@ namespace Oracle_Repository
             else if (typeof(TEntity) == typeof(Product))
             {
                 List<Product> list = new List<Product>();
-                cmd.CommandText = "select p.id, productname, price, firstname, lastname, catagoryname from products p,sellers s, catagory c where p.catagoryid=c.id and sellerid=p.sellerid and p.catagoryid=p.id";
+                cmd.CommandText = "select p.id, productname, price, firstname, lastname, catagoryname from products p,sellers s, catagory c where p.catagoryid=c.id and s.id=p.sellerid and p.catagoryid=c.id";
 
                 OracleDataReader reader = cmd.ExecuteReader();
 
@@ -101,6 +101,11 @@ namespace Oracle_Repository
 
                 con.Close();
                 return list as List<TEntity>;
+            }
+
+            else if (typeof(TEntity) == typeof(ShoppingCart))
+            {
+                return null;                
             }
 
             else
@@ -256,6 +261,20 @@ namespace Oracle_Repository
                 OracleCommand cmd = con.CreateCommand();
 
                 cmd.CommandText = "insert into catagory values(DEFAULT,'" + c.CatagoryName + "')";
+
+                int result = cmd.ExecuteNonQuery();
+
+                con.Close();
+
+                return result;
+            }
+
+            else if (typeof(TEntity)==typeof(ShoppingCart))
+            {
+                ShoppingCart c = entity as ShoppingCart;
+                con.Open();
+                OracleCommand cmd = con.CreateCommand();
+                cmd.CommandText = "insert into shoppingcarts values(DEFAULT," + c.BuyerId + ",'" + c.Time + "','" + c.Date + "')";
 
                 int result = cmd.ExecuteNonQuery();
 

@@ -252,5 +252,35 @@ namespace Oracle_Repository
             else return 0;
         }
 
+        public int Update(TUser user)
+        {
+            con.Open();
+            OracleCommand cmd = con.CreateCommand();
+
+            if (typeof(TUser) == typeof(Buyer))
+            {
+                Buyer b = user as Buyer;
+
+                cmd.CommandText = "update buyers set firstname='"+b.FirstName+"',lastname='"+b.LastName+"',email='"+b.Email+"',address='"+b.Address+"',phone='"+b.Phone+"',areaid="+b.AreaId+" where id="+b.Id;
+                int result = cmd.ExecuteNonQuery();
+
+                con.Close();
+                return result;
+            }
+
+            else if (typeof(TUser) == typeof(Seller))
+            {
+                Seller s = user as Seller;
+                cmd.CommandText = "update sellers set firstname='" + s.FirstName + "',lastname='" + s.LastName + "',email='" + s.Email + "',shopname='" + s.ShopName + "',phone='" + s.Phone + "',areaid=" + s.AreaId + " where id="+s.Id;
+                int result = cmd.ExecuteNonQuery();
+
+                con.Close();
+                return result;
+
+            }
+
+            else return 0;
+        }
+
     }
 }

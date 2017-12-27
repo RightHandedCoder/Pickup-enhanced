@@ -21,5 +21,9 @@ namespace Pickup_Entity
         public string SellerName { get; set; }
         [NotMapped]
         public string CatagoryName { get; set; }
+        [NotMapped]
+        public string Date { get; set; }
+        [NotMapped]
+        public string Time { get; set; }
     }
 }

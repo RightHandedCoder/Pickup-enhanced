@@ -26,24 +26,24 @@ namespace Oracle_Repository
             else return 0;
         }
 
-        public int GetCartId(int? id)
+        public List<Product> GetRecentPurchase(int id)
         {
             con.Open();
-            int cartId = 0;
             OracleCommand cmd = con.CreateCommand();
-            cmd.CommandText = "select id from carts where buyerid=" + id;
+            List<Product> list = new List<Product>();
+
+            cmd.CommandText = "select productname,price,timeofpurchase,dateofpurchase from shoppingcarts s, productpurchase p, products where s.id=p.cartid and p.productid = products.id and s.buyerid="+id;
 
             OracleDataReader reader = cmd.ExecuteReader();
 
-            if (reader.Read())
+            while (reader.Read())
             {
-                cartId = reader.GetInt32(0);
+                list.Add(new Product() { ProductName=reader.GetString(0), Price=reader.GetInt32(1), Time=reader.GetString(2), Date=reader.GetString(3)}); 
             }
 
             con.Close();
 
-            return cartId;
+            return list;
         }
-
     }
 }

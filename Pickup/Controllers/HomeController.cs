@@ -20,7 +20,6 @@ namespace Pickup.Controllers
         {
             //gets data from API
             //return View();
-  
             return View("Index_Oracle", productRepo.GetAll());
         }
 
@@ -51,7 +50,7 @@ namespace Pickup.Controllers
 
         public ActionResult AddToCart(int id)
         {
-            return RedirectToAction("AddToCart", "Buyer", new { @id = id });
+            return RedirectToAction("AddToCart", "Cart", new { @id = id });
         }
         
         public ActionResult MyCart()

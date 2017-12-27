@@ -13,6 +13,10 @@ namespace Pickup.Controllers
         AdminRepository adminRepo = new AdminRepository();
         Repository<Area> areaRepo = new Repository<Area>();
         Repository<Department> deptRepo = new Repository<Department>();
+        Repository<Product> productRepo = new Repository<Product>();
+        Repository<Catagory> catagoryRepo = new Repository<Catagory>();
+        UserRepository<Seller> sellerRepo = new UserRepository<Seller>();
+        UserRepository<Buyer> buyerRepo = new UserRepository<Buyer>();
 
         // GET: Admin
         public ActionResult Index(int? id)
@@ -101,9 +105,7 @@ namespace Pickup.Controllers
         }
 
         public ActionResult BuyersList()
-        {
-            UserRepository<Buyer> buyerRepo = new UserRepository<Buyer>();
-
+        { 
             return View(buyerRepo.GetAll());
         }
 
@@ -116,8 +118,6 @@ namespace Pickup.Controllers
 
         public ActionResult SellersList()
         {
-            UserRepository<Seller> sellerRepo = new UserRepository<Seller>();
-
             return View(sellerRepo.GetAll());
         }
 
@@ -142,12 +142,13 @@ namespace Pickup.Controllers
             return View(productRepo.Get(id));
         }
 
-
+        [HttpGet]
         public ActionResult CreateArea()
         {
             return View();
         }
 
+        [HttpGet]
         public ActionResult CreateDepartment()
         {
             return View();

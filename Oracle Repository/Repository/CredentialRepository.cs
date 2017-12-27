@@ -31,11 +31,6 @@ namespace Oracle_Repository
                 cmd.CommandText = "insert into sellercredentials values(DEFAULT," + c.SellerId + ",'" + c.Username + "','" + c.Password + "','active')";
             }
 
-            else if (typeof(TCredential) == typeof(AdminCredential))
-            {
-                
-            }
-
             int result = cmd.ExecuteNonQuery();
 
             con.Close();
@@ -106,6 +101,84 @@ namespace Oracle_Repository
             }
 
             else return false;
+        }
+
+        public Credential GetById(int id)
+        {
+            con.Open();
+            OracleCommand cmd = con.CreateCommand();
+
+            if (typeof(TCredential) == typeof(BuyerCredential))
+            {
+                BuyerCredential bc = null;
+
+                cmd.CommandText = "select * from buyercredentials where buyerid=" + id;
+
+                OracleDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    bc = new BuyerCredential() { Id = reader.GetInt32(0), BuyerId = reader.GetInt32(1), Username = reader.GetString(2), Password = reader.GetString(3) };
+                }
+
+                con.Close();
+                return bc;
+            }
+
+            else if (typeof(TCredential) == typeof(SellerCredential))
+            {
+                SellerCredential sc = null;
+
+                cmd.CommandText = "select * from sellercredentials where sellerid=" + id;
+
+                OracleDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    sc = new SellerCredential() { Id = reader.GetInt32(0), SellerId = reader.GetInt32(1), Username = reader.GetString(2), Password = reader.GetString(3) };
+                }
+
+                con.Close();
+                return sc;
+
+            }
+
+            else return null;
+        }
+
+        public int UpdatePassword(TCredential obj)
+        {
+            con.Open();
+            OracleCommand cmd = con.CreateCommand();
+
+            if (typeof(TCredential) == typeof(BuyerCredential))
+            {
+                BuyerCredential bc = obj as BuyerCredential;
+
+                cmd.CommandText = "update buyercredentials set password='" + bc.Password +"' where id="+bc.Id;
+
+                int result=cmd.ExecuteNonQuery();
+
+                con.Close();
+
+                return result;
+            }
+
+            else if (typeof(TCredential) == typeof(SellerCredential))
+            {
+                SellerCredential sc = obj as SellerCredential;
+
+                cmd.CommandText = "update sellercredentials set password='" + sc.Password + "' where id=" + sc.Id;
+
+                int result = cmd.ExecuteNonQuery();
+
+                con.Close();
+
+                return result;
+
+            }
+
+            else return 0;
         }
         
     }

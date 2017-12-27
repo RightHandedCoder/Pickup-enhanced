@@ -19,5 +19,10 @@ namespace Pickup
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Injector.Configure();
         }
+
+        protected void Session_Start()
+        {
+            Session["CART"] = new List<int>();
+        }
     }
 }

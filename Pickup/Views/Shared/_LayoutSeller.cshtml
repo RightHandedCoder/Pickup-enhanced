@@ -31,10 +31,10 @@
     <div class="col-xs-3 sidebar">
         <h2>Select Catagory</h2>
         <ul class="nav nav-tabs nav-stacked" id="cat">
-            <li>@Html.ActionLink("A", "", new { id = 1 }, new { @class = "btn btn-primary btn-large" })</li>
-            <li>@Html.ActionLink("B", "", new { id = 2 }, new { @class = "btn btn-primary btn-large" })</li>
-            <li>@Html.ActionLink("C", "", new { id = 3 }, new { @class = "btn btn-primary btn-large" })</li>
-            <li>@Html.ActionLink("D", "", new { id = 4 }, new { @class = "btn btn-primary btn-large" })</li>
+            <li>@Html.ActionLink("Personal Information", "Details", "Seller", new { @id = Session["USERID"] }, new { @class = "btn btn-primary btn-large" })</li>
+            <li>@Html.ActionLink("My Products", "MyProducts", "Seller", new { @id = Session["USERID"] }, new { @class = "btn btn-primary btn-large" })</li>
+            <li>@Html.ActionLink("Change Credentials", "ChangePassword", "Seller", new { @id = Session["USERID"] }, new { @class = "btn btn-primary btn-large" })</li>
+            <li>@Html.ActionLink("Add New Product", "AddProduct", "Seller",null, new { @class = "btn btn-primary btn-large" })</li>
         </ul>
     </div>
     <div class="container body-content">
