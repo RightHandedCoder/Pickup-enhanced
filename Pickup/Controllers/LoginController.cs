@@ -52,11 +52,17 @@ namespace Pickup.Controllers
             if (ModelState.IsValid)
             {
                 CredentialRepository<BuyerCredential> credentialRepo = new CredentialRepository<BuyerCredential>();
-                int id = credentialRepo.Get(credential);
-                Session["USER"] = "Buyer";
-                Session["USERID"] = id;
 
-                return RedirectToAction("Index", "Buyer", new { @id = id });
+                if (credentialRepo.GetStatus(credential))
+                {
+                    int id = credentialRepo.Get(credential);
+                    Session["USER"] = "Buyer";
+                    Session["USERID"] = id;
+
+                    return RedirectToAction("Index", "Buyer", new { @id = id });
+                }
+
+                else return View("Blocked");
             }
 
             else return View(credential);
@@ -69,11 +75,18 @@ namespace Pickup.Controllers
             if (ModelState.IsValid)
             {
                 CredentialRepository<SellerCredential> credentialRepo = new CredentialRepository<SellerCredential>();
-                int id = credentialRepo.Get(credential);
-                Session["USER"] = "Seller";
-                Session["USERID"] = id;
 
-                return RedirectToAction("Index", "Seller", new { @id = id });
+                if (credentialRepo.GetStatus(credential))
+                {
+                    int id = credentialRepo.Get(credential);
+                    Session["USER"] = "Seller";
+                    Session["USERID"] = id;
+
+                    return RedirectToAction("Index", "Seller", new { @id = id });
+                }
+
+                else return View("Blocked");
+                
             }
 
             else return View(credential);  

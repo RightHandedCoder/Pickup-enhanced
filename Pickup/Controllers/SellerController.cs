@@ -141,5 +141,10 @@ namespace Pickup.Controllers
         {
             return View(sellerRepo.GetMyProducts((int)Session["USERID"]));
         }
+
+        public string Get(int id)
+        {
+            return sellerRepo.GetSellerName(id);
+        }
     }
 }

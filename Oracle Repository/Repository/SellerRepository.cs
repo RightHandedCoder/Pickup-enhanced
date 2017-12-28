@@ -39,5 +39,39 @@ namespace Oracle_Repository
                 return list;
             } 
         }
+
+        public string GetSellerName(int id)
+        {
+            con.Open();
+            OracleCommand cmd = con.CreateCommand();
+            cmd.CommandText = "get_sel_name";
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("sel_id", OracleDbType.Int32).Value = id;
+            cmd.Parameters.Add("sel_name", OracleDbType.Varchar2).Direction = System.Data.ParameterDirection.Output;
+
+            cmd.Parameters["sel_name"].Size = 20;
+
+            try
+            {
+               
+                cmd.ExecuteNonQuery();
+                
+                string temp = cmd.Parameters["sel_name"].Value.ToString();
+
+                con.Close();
+                return temp;
+
+
+            }
+            catch (Exception ex)
+            {
+                con.Close();
+                return "null";
+            }
+
+            
+
+        }
     }
 }

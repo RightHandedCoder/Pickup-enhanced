@@ -36,11 +36,11 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login / Register <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Login As Buyer", "Login", new { id = 1 })</li>
-                            <li>@Html.ActionLink("Login As Seller", "Login", new { id = 2 })</li>
+                            <li>@Html.ActionLink("Login As Buyer", "Index","Login",new { id = 1 }, null)</li>
+                            <li>@Html.ActionLink("Login As Seller", "Index", "Login", new { id = 2 }, null)</li>
                             <li role="separator" class="divider"></li>
-                            <li>@Html.ActionLink("Register As Buyer", "Register", new { id = 1 })</li>
-                            <li>@Html.ActionLink("Register As Seller", "Register", new { id = 2 })</li>
+                            <li>@Html.ActionLink("Register As Buyer", "Register", "Home", new { id = 1 }, null)</li>
+                            <li>@Html.ActionLink("Register As Seller", "Register", "Home",new { id = 2 },null)</li>
                         </ul>
                     </li>
                 </ul>

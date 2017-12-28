@@ -1,5 +1,5 @@
 ﻿@model Pickup_Entity.Product
-    <table style="border: 1px solid black; width:300px;">
+    <table style="border: 1px solid black; width:400px;">
         <tr>
             <td>
                 <image alt="Photo"></image>
@@ -10,6 +10,9 @@
                     <tr>
                         <td><b>Product:</b></td>
                         <td>@Model.ProductName</td>
+                        <td align="right" colspan="3">
+                            @Html.ActionLink("Add To Cart", "AddToCart", new { id = Model.Id }, new { @class = "btn btn-primary btn" })
+                        </td>
                     </tr>
                     <tr>
                         <td><b>Price:</b></td>
@@ -20,11 +23,6 @@
                         <td>@Model.CatagoryName</td>
                     </tr>
                 </table>
-            </td>
-        </tr>
-        <tr >
-            <td align="center" colspan="3">
-                @Html.ActionLink("Add To Cart","AddToCart", new { id = Model.Id}, new { @class= "btn btn-primary btn" })
             </td>
         </tr>
     </table>

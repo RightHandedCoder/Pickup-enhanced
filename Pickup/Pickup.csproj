@@ -257,6 +257,7 @@
     <Content Include="Views\Seller\ChangePassword.cshtml" />
     <Content Include="Views\Seller\AddProduct.cshtml" />
     <Content Include="Views\Seller\MyProducts.cshtml" />
+    <Content Include="Views\Shared\Blocked.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

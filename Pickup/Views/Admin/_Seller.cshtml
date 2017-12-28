@@ -13,9 +13,12 @@
         </tr>
         <tr>
             <td>Email: @Model.Email</td>
+            <td colspan="3" valign="middle" align="right">@Html.ActionLink("Block", "BlockSeller", "Admin", new { id = Model.Id }, new { @class = "btn btn-primary btn" })</td>
         </tr>
         <tr>
             <td>Area: @Model.AreaName</td>
+            <td colspan="3" valign="middle" align="right">@Html.ActionLink("Unblock", "UnblockSeller", "Admin", new { id = Model.Id }, new { @class = "btn btn-primary btn" })</td>
+
         </tr>
     </tbody>
 </table>

@@ -2,14 +2,11 @@
 
 @{
     ViewBag.Title = "MyPurchase";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutBuyer.cshtml";
 }
 
 <h2>MyPurchase</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -17,18 +14,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SellerId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CatagoryId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SellerName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CatagoryName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Date)
@@ -48,29 +33,16 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SellerId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CatagoryId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SellerName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CatagoryName)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Time)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
     </tr>
 }
 
 </table>
+
+<div>
+    @Html.ActionLink("Back", "Index", "Buyer", new { @id = Session["USERID"] }, new { @class = "btn btn-primary" })
+</div>

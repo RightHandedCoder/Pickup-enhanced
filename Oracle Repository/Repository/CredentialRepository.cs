@@ -94,13 +94,15 @@ namespace Oracle_Repository
             {
                 if (reader.GetString(0) == "active")
                 {
+                    con.Close();
                     return true;
                 }
 
-                else return false;
+
+                else { con.Close(); return false; }
             }
 
-            else return false;
+            else { con.Close(); return false; }
         }
 
         public Credential GetById(int id)

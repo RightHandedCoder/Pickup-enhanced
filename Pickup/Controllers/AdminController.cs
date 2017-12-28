@@ -29,24 +29,24 @@ namespace Pickup.Controllers
             else return View(adminRepo.Get(id));
         }
 
-        public ActionResult ViewUsers(int? id)
-        {
-            if (id == 1)
-            {
-                UserRepository<Buyer> buyerRepo = new UserRepository<Buyer>();
+        //public ActionResult ViewUsers(int? id)
+        //{
+        //    if (id == 1)
+        //    {
+        //        UserRepository<Buyer> buyerRepo = new UserRepository<Buyer>();
 
-                return View("ViewUsers_Buyer", buyerRepo.GetAll());
-            }
+        //        return View("ViewUsers_Buyer", buyerRepo.GetAll());
+        //    }
 
-            else if (id == 2)
-            {
-                UserRepository<Seller> sellerRepo = new UserRepository<Seller>();
+        //    else if (id == 2)
+        //    {
+        //        UserRepository<Seller> sellerRepo = new UserRepository<Seller>();
 
-                return View("ViewUsers_Seller", sellerRepo.GetAll());
-            }
+        //        return View("ViewUsers_Seller", sellerRepo.GetAll());
+        //    }
 
-            else return RedirectToAction("Index","Home");
-        }
+        //    else return RedirectToAction("Index","Home");
+        //}
 
         public ActionResult Logout()
         {
@@ -188,6 +188,58 @@ namespace Pickup.Controllers
             }
 
             else return View(dept);
+        }
+
+        public ActionResult BlockBuyer(int id)
+        {
+            if (adminRepo.ChangeBuyerStatus(id,"inactive")==1)
+            {
+                return RedirectToAction("BuyersList","Admin");
+            }
+
+            else
+            {
+                return View("Error");
+            }
+        }
+
+        public ActionResult BlockSeller(int id)
+        {
+            if (adminRepo.ChangeSellerStatus(id, "inactive") == 1)
+            {
+                return RedirectToAction("SellersList", "Admin");
+            }
+
+            else
+            {
+                return View("Error");
+            }
+        }
+
+        public ActionResult UnblockBuyer(int id)
+        {
+            if (adminRepo.ChangeSellerStatus(id, "active") == 1)
+            {
+                return RedirectToAction("BuyersList", "Admin");
+            }
+
+            else
+            {
+                return View("Error");
+            }
+        }
+
+        public ActionResult UnblockSeller(int id)
+        {
+            if (adminRepo.ChangeSellerStatus(id, "active") == 1)
+            {
+                return RedirectToAction("SellersList", "Admin");
+            }
+
+            else
+            {
+                return View("Error");
+            }
         }
     }
 }
