@@ -28,6 +28,7 @@
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Login As Buyer", "Index", "Login", new { id = 1 }, null)</li>
                             <li>@Html.ActionLink("Login As Seller", "Index", "Login", new { id = 2 }, null)</li>
+                            <li>@Html.ActionLink("Login As Admin", "Index", "Login", new { id = 3 }, null)</li>
                             <li role="separator" class="divider"></li>
                             <li>@Html.ActionLink("Register As Buyer", "Register", "Home", new { id = 1 }, null)</li>
                             <li>@Html.ActionLink("Register As Seller", "Register", "Home", new { id = 2 }, null)</li>
@@ -50,3 +51,4 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+

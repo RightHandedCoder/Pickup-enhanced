@@ -1,5 +1,5 @@
-﻿using Pickup_Entity;
-using Pickup_Repository;
+﻿using Pickup_API.App_Start;
+using Pickup_Entity;
 using Pickup_Service;
 using System;
 using System.Collections.Generic;
@@ -13,11 +13,16 @@ namespace Pickup_API.Controllers
     public class HomeController : ApiController
     {
         // GET: Home
-        IService<Product> service = new Service<Product>();
+        IProductService productService;
+
+        public HomeController()
+        {
+            productService = Injector.Container.Resolve<IProductService>();
+        }
 
         public IHttpActionResult Get()
         {
-            List<Product> products = service.GetAll();
+            List<Product> products = productService.GetAll();
 
             if (products == null)
             {
@@ -29,7 +34,7 @@ namespace Pickup_API.Controllers
 
         public IHttpActionResult GetDetails([FromUri]int id)
         {
-            Product product = service.Get(id);
+            Product product = productService.Get(id);
 
             if (product == null)
             {

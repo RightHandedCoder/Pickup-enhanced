@@ -14,48 +14,24 @@ namespace Pickup.Controllers
 {
     public class HomeController : Controller
     {
-        ProductRepository productRepo = new ProductRepository();
 
         public ActionResult Index()
         {
             //gets data from API
-            //return View();
-            return View("Index_Oracle", productRepo.GetAll());
+            return View();
         }
 
         public ActionResult Details(int id)
         {
             //gets data from API
-            //return View();
-
-            return View("Details_Oracle",productRepo.Get(id));
+            return View();
         }
 
         public ActionResult Login(int id)
         {
-            //return View();
-
-            return RedirectToAction("Index", "Login", new { @id = id});
+            return View();
         }
 
-        public ActionResult Register(int id)
-        {
-            return RedirectToAction("Index", "Registration", new { @id = id });
-        }
-
-        public ActionResult Catagory(int id)
-        {
-            return View("Index_Oracle", productRepo.GetCatagoryWiseProduct(id));
-        }
-
-        public ActionResult AddToCart(int id)
-        {
-            return RedirectToAction("AddToCart", "Cart", new { @id = id });
-        }
         
-        public ActionResult MyCart()
-        {
-            return RedirectToAction("Index", "Cart");
-        }
     }
 }

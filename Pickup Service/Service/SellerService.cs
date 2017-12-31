@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Pickup_Service
 {
-    public class SellerService : Service<Product>, IProductService
+    public class SellerService : Service<Seller>, ISellerService
     {
     }
 }

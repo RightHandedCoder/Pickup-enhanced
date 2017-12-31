@@ -9,24 +9,6 @@ namespace Pickup_Repository
     {
         //private static DataContext context;
 
-        private DataContext()
-        {
-
-        }
-
-        public static DataContext GetInstance()
-        {
-            //if (context == null)
-            //{
-            //    context = new DataContext();
-            //    return context;
-            //}
-
-            //else return null;
-
-            return new DataContext();
-        }
-
         public DbSet<Buyer> Buyers { get; set; }
         public DbSet<Seller> Sellers { get; set; }
         public DbSet<Admin> Admins { get; set; }

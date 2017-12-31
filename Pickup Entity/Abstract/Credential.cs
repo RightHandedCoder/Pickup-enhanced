@@ -11,7 +11,7 @@ namespace Pickup_Entity
     {
         [Required]
         public string Username { get; set; }
-        [Required,MinLength(4)]
+        [Required,MinLength(4),DataType("Password")]
         public string Password { get; set; }
         public bool Status { get; set; }
     }

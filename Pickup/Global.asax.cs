@@ -9,7 +9,7 @@ using System.Web.Routing;
 
 namespace Pickup
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
@@ -23,6 +23,8 @@ namespace Pickup
         protected void Session_Start()
         {
             Session["CART"] = new List<int>();
+            Session["USER"] = "";
+            Session["USERID"] = "";
         }
     }
 }

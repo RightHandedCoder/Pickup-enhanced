@@ -20,7 +20,17 @@ namespace Pickup.App_Start
 
         public static void Configure()
         {
-            Container.Register<IService<Product>, Service<Product>>().Singleton();
+            Container.Register<IAdminService, AdminService>().Singleton();
+            Container.Register<IAreaService, AreaService>().Singleton();
+            Container.Register<IBuyerService, BuyerService>().Singleton();
+            Container.Register<ICatagoryService, CatagoryService>().Singleton();
+            Container.Register<ICredentialService<BuyerCredential>, CredentialService<BuyerCredential>>().Singleton();
+            Container.Register<ICredentialService<SellerCredential>, CredentialService<SellerCredential>>().Singleton();
+            Container.Register<ICredentialService<AdminCredential>, CredentialService<AdminCredential>>().Singleton();
+            Container.Register<IDepartmentService, DepartmentService>().Singleton();
+            Container.Register<IProductService, ProductService>().Singleton();
+            Container.Register<ISellerService, SellerService>().Singleton();
+            Container.Register<IShoppingCartService, ShoppingCartService>().Singleton();
         }
     }
 }

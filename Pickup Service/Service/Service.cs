@@ -8,31 +8,31 @@ using System.Threading.Tasks;
 
 namespace Pickup_Service
 {
-    public class Service<TEntity> : IService<TEntity> where TEntity : Entity
+    public abstract class Service<TEntity> : IService<TEntity> where TEntity : Entity
     {
         IRepository<TEntity> repo = new Repository<TEntity>();
 
-        public List<TEntity> GetAll()
+        public virtual List<TEntity> GetAll()
         {
             return repo.GetAll();
         }
 
-        public TEntity Get(int id)
+        public virtual TEntity Get(int id)
         {
             return repo.Get(id);
         }
 
-        public int Insert(TEntity entity)
+        public virtual int Insert(TEntity entity)
         {
             return repo.Insert(entity);
         }
 
-        public int Update(TEntity entity)
+        public virtual int Update(TEntity entity)
         {
             return repo.Update(entity);
         }
 
-        public int Delete(TEntity entity)
+        public virtual int Delete(TEntity entity)
         {
             return repo.Delete(entity);
         }

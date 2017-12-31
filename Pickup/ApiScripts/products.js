@@ -16,6 +16,8 @@
                 row += "<tr>";
                 row += "<td>Price:</td>";
                 row += "<td>" + product.Price + "</td>";
+                row += "<td>Catagory:</td>";
+                row += "<td>" + product.CatagoryName + "</td>";
                 row += "<td rowspan='2'><a href='Home/Details/" + product.Id + "'>Add To Cart</a></td>";
                 row += "</tr>";
                 row += "</table>";

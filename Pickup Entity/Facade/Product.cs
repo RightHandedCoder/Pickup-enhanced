@@ -25,7 +25,5 @@ namespace Pickup_Entity
         public string Date { get; set; }
         [NotMapped]
         public string Time { get; set; }
-        [NotMapped]
-        public int UnitSold { get; set; }
     }
 }

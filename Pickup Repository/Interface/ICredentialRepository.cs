@@ -9,6 +9,8 @@ namespace Pickup_Repository
 {
     public interface ICredentialRepository<TCredential> : IRepository<TCredential> where TCredential : Credential
     {
+        Credential ValidateCredential(TCredential credential);
+        bool CheckStatus(string username);
         
     }
 }

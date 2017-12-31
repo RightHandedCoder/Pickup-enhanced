@@ -1,5 +1,6 @@
-﻿using Oracle_Repository;
+﻿using Pickup.App_Start;
 using Pickup_Entity;
+using Pickup_Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,104 +11,133 @@ namespace Pickup.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
-        public ActionResult Index(int id)
+        ICredentialService<BuyerCredential> buyerService;
+        ICredentialService<SellerCredential> sellerService;
+        ICredentialService<AdminCredential> adminService;
+
+        public ActionResult Index(int? id)
         {
-            if (id == 1)
+            if (id == null)
             {
-                return RedirectToAction("Buyer");
+                return RedirectToAction("Index", "Home");
             }
 
+            // Login: Buyer
+            else if (id == 1)
+            {
+                return RedirectToAction("BuyerLogin", "Login");
+            }
+
+            // Login: Seller5
             else if (id == 2)
             {
-                return RedirectToAction("Seller");
+                return RedirectToAction("SellerLogin", "Login");
             }
 
-            else if (id == 3)
+            // Login: Admin
+            else if (id==3)
             {
-                return RedirectToAction("Admin");
+                return RedirectToAction("AdminLogin", "Login");
             }
 
-            else return RedirectToAction("Index", "Home");
+            else return View("Error");
         }
 
-        public ActionResult Buyer()
+        [HttpGet]
+        public ActionResult BuyerLogin()
         {
-            return View("Buyer_Login_Oracle");
-        }
-
-        public ActionResult Seller()
-        {
-            return View("Seller_Login_Oracle");
-        }
-
-        public ActionResult Admin()
-        {
-            return View("Admin_Login_Oracle");
+            return View();
         }
 
         [HttpPost]
-        public ActionResult Buyer(BuyerCredential credential)
+        public ActionResult BuyerLogin(BuyerCredential credential)
         {
-            if (ModelState.IsValid)
+            buyerService = Injector.Container.Resolve<ICredentialService<BuyerCredential>>();
+
+            BuyerCredential credentialFromDb = buyerService.ValidateCredential(credential) as BuyerCredential;
+
+            try
             {
-                CredentialRepository<BuyerCredential> credentialRepo = new CredentialRepository<BuyerCredential>();
-
-                if (credentialRepo.GetStatus(credential))
+                if (credentialFromDb.Status)
                 {
-                    int id = credentialRepo.Get(credential);
-                    Session["USER"] = "Buyer";
-                    Session["USERID"] = id;
-
-                    return RedirectToAction("Index", "Buyer", new { @id = id });
+                    return RedirectToAction("Index", "Buyer", new { id = credentialFromDb.BuyerId });
                 }
 
                 else return View("Blocked");
             }
 
-            else return View(credential);
-           
+            catch (Exception)
+            {
+                return View("Error");
+            }
+        }
+
+        [HttpGet]
+        public ActionResult SellerLogin()
+        {
+            return View();
         }
 
         [HttpPost]
-        public ActionResult Seller(SellerCredential credential)
+        public ActionResult SellerLogin(SellerCredential credential)
         {
+            sellerService = Injector.Container.Resolve<ICredentialService<SellerCredential>>();
+
             if (ModelState.IsValid)
             {
-                CredentialRepository<SellerCredential> credentialRepo = new CredentialRepository<SellerCredential>();
+                SellerCredential credentialFromDb = sellerService.ValidateCredential(credential) as SellerCredential;
 
-                if (credentialRepo.GetStatus(credential))
-                {
-                    int id = credentialRepo.Get(credential);
-                    Session["USER"] = "Seller";
-                    Session["USERID"] = id;
+                try
+                { 
+                    if (credentialFromDb.Status)
+                    {
+                        return RedirectToAction("Index", "Seller", new { id = credentialFromDb.SellerId });
+                    }
 
-                    return RedirectToAction("Index", "Seller", new { @id = id });
+                    else return View("Blocked");
                 }
 
-                else return View("Blocked");
-                
-            }
-
-            else return View(credential);  
-        }
-
-        [HttpPost]
-        public ActionResult Admin(AdminCredential credential)
-        {
-            if (ModelState.IsValid)
-            {
-                CredentialRepository<AdminCredential> credentialRepo = new CredentialRepository<AdminCredential>();
-                int id = credentialRepo.Get(credential);
-                Session["USER"] = "Admin";
-                Session["USERID"] = id;
-
-                return RedirectToAction("Index", "Admin", new { @id = id });
+                catch (Exception)
+                {
+                    return View("Error");
+                }
             }
 
             else return View(credential);
-            
         }
 
+        [HttpGet]
+        public ActionResult AdminLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AdminLogin(AdminCredential credential)
+        {
+            adminService = Injector.Container.Resolve<ICredentialService<AdminCredential>>();
+
+            if (ModelState.IsValid)
+            {
+                AdminCredential credentialFromDb = adminService.ValidateCredential(credential) as AdminCredential;
+
+                try
+                {
+                    if (credentialFromDb.Status)
+                    {
+                        return RedirectToAction("Index", "Admin", new { id = credentialFromDb.AdminId });
+                    }
+
+                    else return View("Blocked");
+                }
+
+                catch (Exception)
+                {
+                    return View("Error");
+                }
+            }
+
+            else return View(credential);
+        }
     }
 }

@@ -162,20 +162,11 @@
     <Compile Include="App_Start\Injector.cs" />
     <Compile Include="App_Start\InjectorControllerFactory.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\BuyerController.cs" />
-    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\RegistrationController.cs" />
-    <Compile Include="Controllers\SellerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BuyerViewModel.cs" />
-    <Compile Include="Models\ChangePasswordViewModel.cs" />
-    <Compile Include="Models\SellerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -216,53 +207,13 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\_Product.cshtml" />
-    <Content Include="Views\Home\Index_Oracle.cshtml" />
-    <Content Include="Views\Login\Buyer_Login_Oracle.cshtml" />
-    <Content Include="Views\Login\Seller_Login_Oracle.cshtml" />
-    <Content Include="Views\Buyer\Index.cshtml" />
-    <Content Include="Views\Seller\Index.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Registration\Buyer.cshtml" />
-    <Content Include="Views\Registration\Seller.cshtml" />
-    <Content Include="Views\Admin\ViewUsers_Buyer.cshtml" />
-    <Content Include="Views\Admin\ViewUsers_Seller.cshtml" />
-    <Content Include="Views\Shared\_LayoutHome.cshtml" />
-    <Content Include="Views\Shared\_LayoutUser.cshtml" />
-    <Content Include="Views\Shared\_LayoutBuyer.cshtml" />
-    <Content Include="Views\Shared\_LayoutSeller.cshtml" />
-    <Content Include="Views\Home\_Catagory.cshtml" />
-    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
-    <Content Include="Views\Login\Admin_Login_Oracle.cshtml" />
-    <Content Include="Views\Admin\Create.cshtml" />
-    <Content Include="Views\Admin\BuyersList.cshtml" />
-    <Content Include="Views\Admin\_Buyer.cshtml" />
-    <Content Include="Views\Admin\BuyerDetails.cshtml" />
-    <Content Include="Views\Admin\_Seller.cshtml" />
-    <Content Include="Views\Admin\SellersList.cshtml" />
-    <Content Include="Views\Admin\SellerDetails.cshtml" />
-    <Content Include="Views\Admin\ProductsList.cshtml" />
-    <Content Include="Views\Admin\_Product.cshtml" />
-    <Content Include="Views\Admin\ProductDetails.cshtml" />
-    <Content Include="Views\Admin\CreateArea.cshtml" />
-    <Content Include="Views\Admin\CreateDepartment.cshtml" />
-    <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\Cart\CheckOut.cshtml" />
-    <Content Include="Views\Buyer\MyPurchase.cshtml" />
-    <Content Include="Views\Buyer\Details.cshtml" />
-    <Content Include="Views\Buyer\Edit.cshtml" />
-    <Content Include="Views\Buyer\ChangePassword.cshtml" />
-    <Content Include="Views\Seller\Details.cshtml" />
-    <Content Include="Views\Seller\Edit.cshtml" />
-    <Content Include="Views\Seller\ChangePassword.cshtml" />
-    <Content Include="Views\Seller\AddProduct.cshtml" />
-    <Content Include="Views\Seller\MyProducts.cshtml" />
-    <Content Include="Views\Shared\Blocked.cshtml" />
+    <Content Include="Views\Login\SellerLogin.cshtml" />
+    <Content Include="Views\Login\AdminLogin.cshtml" />
+    <Content Include="Views\Login\BuyerLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Catagory\" />
-    <Folder Include="Views\Product\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

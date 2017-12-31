@@ -9,5 +9,7 @@ namespace Pickup_Service
 {
     public interface ICredentialService<TCredential> : IService<TCredential> where TCredential : Credential
     {
+        Credential ValidateCredential(TCredential credential);
+        bool CheckStatus(string username);
     }
 }
