@@ -9,5 +9,6 @@ namespace Pickup_Service
 {
     public interface ISellerService : IService<Seller>
     {
+        int GetLastSellerId(Seller seller);
     }
 }

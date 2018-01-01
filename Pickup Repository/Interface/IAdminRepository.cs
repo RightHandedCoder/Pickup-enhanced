@@ -9,5 +9,6 @@ namespace Pickup_Repository
 {
     public interface IAdminRepository : IRepository<Admin>
     {
+        int GetLastAdminId(Admin admin);
     }
 }

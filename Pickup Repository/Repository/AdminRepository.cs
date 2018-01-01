@@ -9,5 +9,11 @@ namespace Pickup_Repository
 {
     public class AdminRepository : Repository<Admin>, IAdminRepository
     {
+        DataContext context = new DataContext();
+
+        public int GetLastAdminId(Admin admin)
+        {
+            return context.Set<Admin>().Where(a => a.Email == admin.Email).SingleOrDefault().Id;
+        }
     }
 }

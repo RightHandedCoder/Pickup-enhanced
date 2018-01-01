@@ -32,7 +32,8 @@ namespace Pickup_API.Controllers
             return Ok(products);
         }
 
-        public IHttpActionResult GetDetails([FromUri]int id)
+        [ActionName("Details")]
+        public IHttpActionResult Get([FromUri]int id)
         {
             Product product = productService.Get(id);
 
@@ -44,6 +45,61 @@ namespace Pickup_API.Controllers
             return Ok(product);
         }
 
+        [ActionName("AddProduct")]
+        public IHttpActionResult Post([FromBody]Product product)
+        {
+            try
+            {
+                if (productService.Insert(product) == 1)
+                {
+                    return StatusCode(HttpStatusCode.Created);
+                }
 
+                else return StatusCode(HttpStatusCode.Gone);
+            }
+            catch (Exception)
+            {
+                return StatusCode(HttpStatusCode.BadRequest);
+            }
+        }
+
+        [ActionName("EditProduct")]
+        public IHttpActionResult Put([FromBody]Product product, [FromUri]int id)
+        {
+            product.Id = id;
+
+            try
+            {
+                productService.Update(product);
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return StatusCode(HttpStatusCode.NotModified);
+            }
+        }
+
+        public IHttpActionResult Delete([FromUri]int id)
+        {
+            Product product = productService.Get(id);
+
+            if (product==null)
+            {
+                return StatusCode(HttpStatusCode.NoContent);
+            }
+
+            else
+            {
+                try
+                {
+                    productService.Delete(product);
+                    return Ok();
+                }
+                catch (Exception)
+                {
+                    return StatusCode(HttpStatusCode.BadRequest);
+                }
+            }
+        }
     }
 }

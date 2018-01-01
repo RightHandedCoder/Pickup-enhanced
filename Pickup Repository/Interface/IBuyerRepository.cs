@@ -9,5 +9,6 @@ namespace Pickup_Repository
 {
     public interface IBuyerRepository : IRepository<Buyer>
     {
+        int GetLastBuyerId(Buyer buyer);
     }
 }

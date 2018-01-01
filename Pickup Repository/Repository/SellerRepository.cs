@@ -9,5 +9,11 @@ namespace Pickup_Repository
 {
     public class SellerRepository : Repository<Seller>, ISellerRepository
     {
+        DataContext context = new DataContext();
+
+        public int GetLastSellerId(Seller seller)
+        {
+            return context.Set<Seller>().Where(s => s.Email == seller.Email).SingleOrDefault().Id;
+        }
     }
 }

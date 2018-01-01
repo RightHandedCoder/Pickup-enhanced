@@ -9,5 +9,6 @@ namespace Pickup_Repository
 {
     public interface ISellerRepository : IRepository<Seller>
     {
+        int GetLastSellerId(Seller seller);
     }
 }

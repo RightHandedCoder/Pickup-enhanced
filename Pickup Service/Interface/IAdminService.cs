@@ -9,5 +9,6 @@ namespace Pickup_Service
 {
     public interface IAdminService : IService<Admin>
     {
+        int GetLastAdminId(Admin admin);
     }
 }
