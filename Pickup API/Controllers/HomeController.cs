@@ -55,7 +55,7 @@ namespace Pickup_API.Controllers
                     return StatusCode(HttpStatusCode.Created);
                 }
 
-                else return StatusCode(HttpStatusCode.Gone);
+                else return StatusCode(HttpStatusCode.NotModified);
             }
             catch (Exception)
             {

@@ -21,12 +21,6 @@ namespace Pickup.Controllers
             return View();
         }
 
-        public ActionResult Details(int id)
-        {
-            //gets data from API
-            return View();
-        }
-
         public ActionResult Login(int id)
         {
             return View();

@@ -12,10 +12,11 @@ namespace Pickup.Controllers
     public class AdminController : Controller
     {
         IAdminService service;
+       
 
         public AdminController()
         {
-            service = Injector.Container.Resolve<IAdminService>();
+            service = Injector.Container.Resolve<IAdminService>(); 
         }
 
         public ActionResult Index(int id)
@@ -24,5 +25,18 @@ namespace Pickup.Controllers
 
             return View(admin);
         }
+
+        public ActionResult AddProduct()
+        {
+            return RedirectToAction("Add","Product");
+        }
+
+        public ActionResult EditProduct(int id)
+        {
+            return RedirectToAction("Edit", "Product", new { @id = id });
+        }
+
+
     }
+
 }

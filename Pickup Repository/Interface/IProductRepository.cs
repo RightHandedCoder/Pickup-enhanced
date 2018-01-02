@@ -9,5 +9,6 @@ namespace Pickup_Repository
 {
     public interface IProductRepository : IRepository<Product>
     {
+        
     }
 }

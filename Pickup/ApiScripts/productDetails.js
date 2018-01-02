@@ -1,11 +1,12 @@
 ﻿$(document).ready(function () {
 
     function GetId() {
-        var result = window.location.pathname.split('/Home/Details/');
+        var result = window.location.pathname.split('/Product/Details/');
 
         return result[1];
     }
     var id = GetId();
+    console.log(id);
     $.ajax({
         url: 'http://localhost:52683/api/Home/' + id,
         method: 'GET',

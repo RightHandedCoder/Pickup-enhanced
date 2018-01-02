@@ -31,6 +31,7 @@ namespace Pickup_Repository
         public virtual int Update(TEntity entity)
         {
             context.Entry<TEntity>(entity).State = EntityState.Modified;
+            
             return context.SaveChanges();
         }
 

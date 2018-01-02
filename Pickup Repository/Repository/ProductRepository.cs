@@ -28,5 +28,15 @@ namespace Pickup_Repository
 
             return list;
         }
+
+        public override int Update(Product entity)
+        {
+            Product pro = context.Set<Product>().Find(entity.Id);
+
+            pro.ProductName = entity.ProductName;
+            pro.Price = entity.Price;
+
+            return context.SaveChanges();
+        }
     }
 }

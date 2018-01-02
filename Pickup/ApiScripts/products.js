@@ -6,7 +6,7 @@
         success: function (productList) {
             productList.forEach(function (product) {
                 var row = "<tr>";
-                row += "<td><a href='Home/Details/" + product.Id + "'><image alt='Photo'></td></a>";
+                row += "<td><a href='http://localhost:52662/Product/Details/" + product.Id + "'><image alt='Photo'></td></a>";
                 row += "<td>";
                 row += "<table align = 'center'>";
                 row += "<tr>";

@@ -1,0 +1,16 @@
+﻿@model Pickup_Entity.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/ApiScripts/productDetails.js"></script>
+<div>
+    <p id="product"></p>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
