@@ -40,6 +40,13 @@ namespace Pickup.Controllers
             return View();
         }
 
+        public ActionResult DeleteProduct(int id)
+        {
+            Product p = productService.Get(id);
+
+            return View(p);
+        }
+
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -48,11 +55,6 @@ namespace Pickup.Controllers
             return View(productToEdit);
         }
 
-        [HttpPost]
-        public ActionResult Edit(Product product)
-        {
-            productService.Update(product);
-            return RedirectToAction("Index", "Home");
-        }
+
     }
 }

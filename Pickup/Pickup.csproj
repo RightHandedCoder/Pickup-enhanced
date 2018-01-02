@@ -176,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApiScripts\AddProduct.js" />
+    <Content Include="ApiScripts\DeleteProduct.js" />
     <Content Include="ApiScripts\EditProduct.js" />
     <Content Include="ApiScripts\productDetails.js" />
     <Content Include="ApiScripts\products.js" />
@@ -226,6 +227,7 @@
     <Content Include="Views\Product\PostEdit.cshtml" />
     <Content Include="Views\Admin\AddCatagory.cshtml" />
     <Content Include="Views\Admin\AddArea.cshtml" />
+    <Content Include="Views\Product\DeleteProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

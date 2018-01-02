@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
     function GetId() {
-        var result = window.location.pathname.split('/Product/Edit/');
+        var result = window.location.pathname.split('/Product/DeleteProduct/');
 
         return result[1];
     }
@@ -17,6 +17,7 @@
             complete: function (xhr)
             {
                 alert(xhr.statusText);
+                location.href ="http://localhost:52662/"
             }
         })
     })

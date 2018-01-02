@@ -14,6 +14,7 @@ namespace Pickup.Controllers
         IAdminService adminService;
         ICatagoryService catagoryService;
         IAreaService areaService;
+        IProductService productService;
        
 
         public AdminController()
@@ -21,6 +22,7 @@ namespace Pickup.Controllers
             adminService = Injector.Container.Resolve<IAdminService>();
             catagoryService = Injector.Container.Resolve<ICatagoryService>();
             areaService = Injector.Container.Resolve<IAreaService>();
+            productService = Injector.Container.Resolve<IProductService>();
         }
 
         public ActionResult Index(int id)
@@ -38,6 +40,11 @@ namespace Pickup.Controllers
         public ActionResult EditProduct(int id)
         {
             return RedirectToAction("Edit", "Product", new { @id = id });
+        }
+
+        public ActionResult DeleteProduct(int id)
+        {
+            return RedirectToAction("DeleteProduct", "Product", new { @id = id });
         }
 
         public ActionResult AddArea()
