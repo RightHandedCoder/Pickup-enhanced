@@ -47,5 +47,12 @@ namespace Pickup.Controllers
             AddProductViewModel productToEdit = new AddProductViewModel() { Id=product.Id, CatagoryId=product.CatagoryId.ToString(), ProductName=product.ProductName, Price=product.Price};
             return View(productToEdit);
         }
+
+        [HttpPost]
+        public ActionResult Edit(Product product)
+        {
+            productService.Update(product);
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

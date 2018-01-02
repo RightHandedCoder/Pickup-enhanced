@@ -16,5 +16,10 @@ namespace Pickup_Service
         {
             return repo.GetAll();
         }
+
+        public override int Update(Product entity)
+        {
+            return repo.Update(entity);
+        }
     }
 }

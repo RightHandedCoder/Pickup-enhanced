@@ -31,10 +31,12 @@ namespace Pickup_Repository
 
         public override int Update(Product entity)
         {
-            Product pro = context.Set<Product>().Find(entity.Id);
+            Product p = context.Products.SingleOrDefault(a => a.Id == entity.Id);
 
-            pro.ProductName = entity.ProductName;
-            pro.Price = entity.Price;
+            p.ProductName = entity.ProductName;
+            p.Price = entity.Price;
+            p.SellerId = entity.SellerId;
+            p.CatagoryId = entity.CatagoryId;
 
             return context.SaveChanges();
         }
