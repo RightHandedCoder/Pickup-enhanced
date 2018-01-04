@@ -49,8 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interface\IBuyerPurchaseRepository.cs" />
     <Compile Include="Repository\AdminRepository.cs" />
     <Compile Include="Repository\AreaRepository.cs" />
+    <Compile Include="Repository\BuyerPurchaseRepository.cs" />
     <Compile Include="Repository\BuyerRepository.cs" />
     <Compile Include="Repository\CatagoryRepository.cs" />
     <Compile Include="Repository\CredentialRepository.cs" />

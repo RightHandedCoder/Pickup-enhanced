@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pickup_Service
+namespace Pickup_Repository
 {
-    public interface IProductService : IService<Product>
+    public interface IBuyerPurchaseRepository : IRepository<BuyerPurchase>
     {
-        List<Product> Search(string src);
+
     }
 }

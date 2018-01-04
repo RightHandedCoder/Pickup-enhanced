@@ -1,18 +1,18 @@
 ﻿@model Pickup_Entity.BuyerCredential
 
 @{
-    ViewBag.Title = "BuyerLogin";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutBlank.cshtml";
 }
 
-<h2>BuyerLogin</h2>
+<h2>Login Form</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>BuyerCredential</h4>
+        <h4>Please Fill Up Your Login Credentials</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -35,11 +35,9 @@
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Login" class="btn btn-default" />
                 <input type="reset" value="Clear" class="btn btn-default" />
+                @Html.ActionLink("Back", "Index", "Home", null, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back", "Index", "Home", null, new { @class = "btn btn-primary" })
-</div>

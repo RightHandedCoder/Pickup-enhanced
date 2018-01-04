@@ -21,5 +21,10 @@ namespace Pickup_Service
         {
             return repo.Update(entity);
         }
+
+        public List<Product> Search(string src)
+        {
+            return repo.Search(src);
+        }
     }
 }

@@ -16,5 +16,10 @@ namespace Pickup_Service
         {
             return repo.GetLastBuyerId(buyer);
         }
+
+        public override int Update(Buyer entity)
+        {
+            return repo.Update(entity);
+        }
     }
 }

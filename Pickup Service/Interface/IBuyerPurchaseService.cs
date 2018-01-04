@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Pickup_Service
 {
-    public interface IProductService : IService<Product>
+    public interface IBuyerPurchaseService : IService<BuyerPurchase>
     {
-        List<Product> Search(string src);
+
     }
 }

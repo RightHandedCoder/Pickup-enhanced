@@ -31,6 +31,7 @@ namespace Pickup.App_Start
             Container.Register<IProductService, ProductService>().Singleton();
             Container.Register<ISellerService, SellerService>().Singleton();
             Container.Register<IShoppingCartService, ShoppingCartService>().Singleton();
+            Container.Register<IBuyerPurchaseService, BuyerPurchaseService>().Singleton();
         }
     }
 }

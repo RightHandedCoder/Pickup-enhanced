@@ -9,6 +9,6 @@ namespace Pickup_Repository
 {
     public interface IProductRepository : IRepository<Product>
     {
-        
+        List<Product> Search(string src);
     }
 }

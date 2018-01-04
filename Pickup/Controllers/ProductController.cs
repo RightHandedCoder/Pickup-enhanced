@@ -21,6 +21,20 @@ namespace Pickup.Controllers
             productService = Injector.Container.Resolve<IProductService>();
         }
 
+        public ActionResult Index()
+        {
+            List<Product> list = new List<Product>();
+
+            foreach  (Product item in productService.GetAll())
+            {
+                item.CatagoryName = catagoryService.Get(item.CatagoryId).CatagoryName;
+
+                list.Add(item);
+            }
+
+            return View(list);
+        }
+
         public ActionResult Add()
         {
             List<SelectListItem> catagoryList = new List<SelectListItem>();
@@ -47,7 +61,7 @@ namespace Pickup.Controllers
             return View(p);
         }
 
-        [HttpGet]
+        [ActionName("EditProduct")]
         public ActionResult Edit(int id)
         {
             Product product = productService.Get(id);

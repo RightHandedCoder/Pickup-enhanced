@@ -14,6 +14,12 @@ namespace Pickup.Controllers
 {
     public class HomeController : Controller
     {
+        IProductService productService;
+
+        public HomeController()
+        {
+            productService = Injector.Container.Resolve<IProductService>();
+        }
 
         public ActionResult Index()
         {
@@ -26,6 +32,11 @@ namespace Pickup.Controllers
             return View();
         }
 
-        
+        public ActionResult Search(FormCollection form)
+        {
+            return View(productService.Search(form["searchTxt"]));
+        }
+
+
     }
 }

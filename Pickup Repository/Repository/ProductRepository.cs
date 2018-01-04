@@ -29,6 +29,21 @@ namespace Pickup_Repository
             return list;
         }
 
+        public List<Product> Search(string src)
+        {
+            List<Product> product = new List<Product>();
+
+            foreach (Product item in context.Products.ToList())
+            {
+                if (item.ProductName.StartsWith(src))
+                {
+                    product.Add(item);
+                }
+            }
+
+            return product;
+        }
+
         public override int Update(Product entity)
         {
             Product p = context.Products.SingleOrDefault(a => a.Id == entity.Id);
@@ -40,5 +55,7 @@ namespace Pickup_Repository
 
             return context.SaveChanges();
         }
+        
+
     }
 }

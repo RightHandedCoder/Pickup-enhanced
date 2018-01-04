@@ -1,0 +1,20 @@
+﻿@model Pickup_Entity.Buyer
+
+@{
+    ViewBag.Title = "Invoice";
+    Layout = "~/Views/Shared/_LayoutBuyer.cshtml";
+}
+
+<h2>Invoice</h2>
+
+<div>
+    <h4>@Model.FirstName @Model.LastName</h4>
+    <h2>Do you want to confirm payment of @ViewBag.Total ?</h2>
+
+    <div>
+        <p>@Html.ActionLink("Yes", "Confirm", "ShoppingCart", new { @id = Session["USERID"] }, new { @class = "btn btn-primary" })</p>
+        <p>@Html.ActionLink("No", "Index", "Home", null, new { @class = "btn btn-primary" })</p>
+    </div>
+   
+</div>
+

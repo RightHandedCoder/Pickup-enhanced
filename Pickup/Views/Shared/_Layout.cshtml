@@ -1,54 +1,87 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Index</title>
+
+    <!-- Bootstrap -->
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse container-fluid">
         <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Pickup.com", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand" href="#">PickUp</a>
             </div>
-            <div class="navbar-collapse collapse">
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 </ul>
+
+                @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.TextBox("searchTxt",null,new { @class = "form-control", placeholder="Search" })
+                            </div>
+                            <button class="btn btn-default">Search</button>
+                        </div>
+
+                    </div>
+                }
+
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login / Register <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Login As Buyer", "Index", "Login", new { id = 1 }, null)</li>
-                            @*<li>@Html.ActionLink("Login As Seller", "Index", "Login", new { id = 2 }, null)</li>*@
-                            <li>@Html.ActionLink("Login As Admin", "Index", "Login", new { id = 3 }, null)</li>
-                            <li role="separator" class="divider"></li>
-                            <li>@Html.ActionLink("Register As Buyer", "Index", "Registration", new { id = 1 }, null)</li>
-                            @*<li>@Html.ActionLink("Register As Seller", "Index", "Registration", new { id = 2 }, null)</li>*@
-                        </ul>
-                    </li>
+                    <li>@Html.ActionLink("Login", "Index", "Login", new { id = 1 }, null)</li>
+                    <li>@Html.ActionLink("Sign Up", "Index", "Registration", new { id = 1 }, null)</li>
                 </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            @*//side bar*@
+            <div class="col-md-2 text-center well" style="height:auto">
+
+                <div id="sidebar" class="well sidebar-nav">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li>@Html.ActionLink("Men Cloths", "Filter", "Home", new { @id = 1 }, new { @class = "btn btn-primary" })</li>
+                        <li>@Html.ActionLink("Women Cloths", "Filter", "Home", new { @id = 2 }, new { @class = "btn btn-primary" })</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="col-md-8 text-center" style="height:auto">
+                @RenderBody();
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
-

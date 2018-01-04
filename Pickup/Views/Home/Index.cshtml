@@ -1,17 +1,37 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (Session["USERID"].ToString()!="" && Session["USER"].ToString()=="buyer")
+    {
+        ViewBag.Title = "Index User";
+        Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    }
+
+    else if (Session["USERID"].ToString() != "" && Session["USER"].ToString() == "admin")
+    {
+        ViewBag.Title = "Index User";
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+
+    else
+    {
+        ViewBag.Title = "Index Blank";
+        Layout = "~/Views/Shared/_LayoutBlank.cshtml";
+    }
+
 }
 
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
 <script src="~/ApiScripts/products.js"></script>
+<script src="~/ApiScripts/Search.js"></script>
+<div id="productArea">
 
-<table table id="productArea" align="center">
-
-</table>
-
+</div>
 <div id="noti"></div>
+
+<div>
+    @Html.ActionLink("Admin Login","Index", "Login", new { @id=3}, null)
+</div>
 
 

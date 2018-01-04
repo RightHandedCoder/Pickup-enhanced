@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
     function GetId() {
-        var result = window.location.pathname.split('/Product/Edit/');
+        var result = window.location.pathname.split('/Product/EditProduct/');
 
         return result[1];
     }
@@ -12,7 +12,7 @@
 
     $('#btnSave').click(function () {
 
-        var product = { Id: parseInt(document.getElementById("Id").value), ProductName: document.getElementById("ProductName").value, Price: parseInt(document.getElementById("Price").value), SellerId: 2, CatagoryId: parseInt(document.getElementById("CatagoryId").value) }
+        var product = { ProductName: document.getElementById("ProductName").value, Price: parseInt(document.getElementById("Price").value), SellerId: 2, CatagoryId: parseInt(document.getElementById("CatagoryId").value) }
 
         var json = JSON.stringify(product);
 
@@ -29,6 +29,7 @@
             {
                 window.alert(xhr.statusText);
                 console.log(json);
+                window.location.href = 'http://localhost:526832/';
             }
         })
     })

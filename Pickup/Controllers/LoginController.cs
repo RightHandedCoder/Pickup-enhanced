@@ -60,6 +60,8 @@ namespace Pickup.Controllers
             {
                 if (credentialFromDb.Status)
                 {
+                    Session["USERID"] = credentialFromDb.BuyerId;
+                    Session["USER"] = "buyer";
                     return RedirectToAction("Index", "Buyer", new { id = credentialFromDb.BuyerId });
                 }
 
@@ -125,6 +127,8 @@ namespace Pickup.Controllers
                 {
                     if (credentialFromDb.Status)
                     {
+                        Session["USERID"] = credentialFromDb.AdminId;
+                        Session["USER"] = "admin";
                         return RedirectToAction("Index", "Admin", new { id = credentialFromDb.AdminId });
                     }
 

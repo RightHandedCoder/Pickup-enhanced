@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Pickup_Entity.Product>
+
+@{
+    if (Session["USER"].ToString()=="buyer")
+    {
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    }
+
+    else
+    {
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+}
+
+@{ 
+    int sum = 0;
+}
+<h2>Index</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CatagoryName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CatagoryName)
+        </td>
+        <td>@Html.ActionLink("Remove", "Delete", "ShoppingCart", new { @id=item.Id }, new { @class = "btn btn-primary" })</td>
+    </tr>
+
+    sum += item.Price;
+}  
+</table>
+<p><h2>Total: @sum</h2></p>
+<p></p>
+<div>
+    @Html.ActionLink("Check Out", "Checkout", "ShoppingCart", new { @total=sum} , new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back", "Index", "Home", null, new { @class = "btn btn-primary" })
+</div>

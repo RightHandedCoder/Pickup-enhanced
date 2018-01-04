@@ -22,6 +22,7 @@ namespace Pickup_Repository
         public DbSet<Product> Products { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<Catagory> Catagories { get; set; }
+        public DbSet<BuyerPurchase> BuyerPurchases { get; set; }
 
     }
 

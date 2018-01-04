@@ -163,10 +163,12 @@
     <Compile Include="App_Start\InjectorControllerFactory.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BuyerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -180,6 +182,7 @@
     <Content Include="ApiScripts\EditProduct.js" />
     <Content Include="ApiScripts\productDetails.js" />
     <Content Include="ApiScripts\products.js" />
+    <Content Include="ApiScripts\Search.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -220,14 +223,30 @@
     <Content Include="Views\Login\BuyerLogin.cshtml" />
     <Content Include="Views\Registration\BuyerRegistration.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Product\AddProduct.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
-    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\EditProduct.cshtml" />
     <Content Include="Views\Product\PostEdit.cshtml" />
     <Content Include="Views\Admin\AddCatagory.cshtml" />
     <Content Include="Views\Admin\AddArea.cshtml" />
     <Content Include="Views\Product\DeleteProduct.cshtml" />
+    <Content Include="Views\Shared\_LayoutNew.cshtml" />
+    <Content Include="Views\Buyer\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutBlank.cshtml" />
+    <Content Include="Views\Shared\_LayoutBuyer.cshtml" />
+    <Content Include="Views\Buyer\Details.cshtml" />
+    <Content Include="Views\Shared\_LayoutUser.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Buyer\Invoice.cshtml" />
+    <Content Include="Views\ShoppingCart\Confirm.cshtml" />
+    <Content Include="Views\Buyer\MyPurchase.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Purchase.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Buyer\Edit.cshtml" />
+    <Content Include="Views\Admin\BuyerList.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
